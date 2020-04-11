@@ -1,3 +1,5 @@
+import os
+
 def error(e):
     print(f"ERROR : {e}")
 
@@ -74,6 +76,9 @@ def box(bst):
     print("| "+" "*maximum+" |")
     print("+-"+"-"*maximum+"-+")
 
+def clr():
+    os.system('cls')
+
 
 def interact():
     print("\n'interact' module")
@@ -84,6 +89,7 @@ def interact():
     print("info(<string>) : Display custom information")
     print("msg(<string>) : Display custom message")
     print("tip(<string>) : Display custom tip")
+    print("clr() : Clear terminal")
     print("star(<string>) : Display custom starred message")
     print("box(<string>) : Display custom boxed information")
     print("yesno() : Ask a yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes')")
