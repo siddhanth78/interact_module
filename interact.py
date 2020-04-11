@@ -50,8 +50,20 @@ def ques(q):
     print()
     return ans
 
-def msg(m):
-    print(f"{m}")
+def msg(m,f=0,e=0):
+    if f == 0:
+        mode = False
+    elif f == 1:
+        mode = True
+    else:
+        mode = False
+
+    if e == 0:
+        print(f"{m}" , flush = mode)
+    elif e == 1:
+        print(f"{m}" , flush = mode , end='')
+    else:
+        print(f"{m}" , flush = mode)
 
 def star(st):
     print(f"*{st}")
@@ -93,7 +105,7 @@ def interact():
     print("error(<string>) : Display custom error message")
     print("warn(<string>) : Display custom warning message")
     print("info(<string>) : Display custom information")
-    print("msg(<string>) : Display custom message")
+    print("msg(<string> [ , f ,e ]) : Display custom message optional args f,e defaults f=0 , e=0 set e=1 for no new line set f=1 for flush")
     print("tip(<string>) : Display custom tip")
     print("clr() : Clear terminal")
     print("star(<string>) : Display custom starred message")
