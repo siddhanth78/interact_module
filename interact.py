@@ -14,28 +14,34 @@ def tip(t):
 
 def custom_yesno(yn):
     conf = input(f"{yn} (y/n) : ")
-    if conf.lower() in ['y' , 'yes']:
+    if conf.lower().strip() in ['y' , 'yes']:
         con = 1
-    elif conf.lower() in ['n' , 'no']:
+    elif conf.lower().strip() in ['n' , 'no']:
         con = 0
+    else:
+        con = 2
     print()
     return con
     
 def yesno():
     conf = input("Confirm? (y/n) : ")
-    if conf.lower() in ['y' , 'yes']:
+    if conf.lower().strip() in ['y' , 'yes']:
         con = 1
-    elif conf.lower() in ['n' , 'no']:
+    elif conf.lower().strip() in ['n' , 'no']:
         con = 0
+    else:
+        con = 2
     print()
     return con
 
 def exit_yesno():
     conf = input(f"Exit from application? (y/n) : ")
-    if conf.lower() in ['y' , 'yes']:
+    if conf.lower().strip() in ['y' , 'yes']:
         con = 1
-    elif conf.lower() in ['n' , 'no']:
+    elif conf.lower().strip() in ['n' , 'no']:
         con = 0
+    else:
+        con = 2
     print()
     return con
 
@@ -92,9 +98,9 @@ def interact():
     print("clr() : Clear terminal")
     print("star(<string>) : Display custom starred message")
     print("box(<string>) : Display custom boxed information")
-    print("yesno() : Ask a yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes')")
-    print("exit_yesno() : Ask a yes-no confirmation before exitting. Returns an integer (0 - 'no' , 1 - 'yes')")
-    print("custom_yesno(<string>) : Ask a custom yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes')")
+    print("yesno() : Ask a yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes' , 2 - none of them)")
+    print("exit_yesno() : Ask a yes-no confirmation before exitting. Returns an integer (0 - 'no' , 1 - 'yes' , 2 - none of them)")
+    print("custom_yesno(<string>) : Ask a custom yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes' , 2 - none of them)")
     print("ques(<string>) : Ask a question. Returns a string")
     print("menu(<string> , <list>) : Display a menu for the user. Items are automatically numbered\n")
     
