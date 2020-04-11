@@ -1,17 +1,17 @@
 def error(e):
-    print(f"\nERROR : {e}\n")
+    print(f"ERROR : {e}")
 
 def warn(w):
-    print(f"\nWARNING : {w}\n")
+    print(f"WARNING : {w}")
 
 def info(i):
-    print(f"\nINFO : {i}\n")
+    print(f"INFO : {i}")
 
 def tip(t):
-    print(f"\nTIP : {t}\n")
+    print(f"TIP : {t}")
 
 def custom_yesno(yn):
-    conf = input(f"\n{yn} (y/n) : ")
+    conf = input(f"{yn} (y/n) : ")
     if conf.lower() in ['y' , 'yes']:
         con = 1
     elif conf.lower() in ['n' , 'no']:
@@ -20,7 +20,7 @@ def custom_yesno(yn):
     return con
     
 def yesno():
-    conf = input("\nConfirm? (y/n) : ")
+    conf = input("Confirm? (y/n) : ")
     if conf.lower() in ['y' , 'yes']:
         con = 1
     elif conf.lower() in ['n' , 'no']:
@@ -29,7 +29,7 @@ def yesno():
     return con
 
 def exit_yesno():
-    conf = input(f"\nExit from application? (y/n) : ")
+    conf = input(f"Exit from application? (y/n) : ")
     if conf.lower() in ['y' , 'yes']:
         con = 1
     elif conf.lower() in ['n' , 'no']:
@@ -43,10 +43,10 @@ def ask_ques(q):
     return ans
 
 def msg(m):
-    print(f"\n{m}\n")
+    print(f"{m}")
 
 def star(st):
-    print(f"\n*{st}\n")
+    print(f"*{st}")
 
 def menu(title,li):
     if isinstance(li , list) == False:
@@ -89,7 +89,7 @@ def interact():
     print("yesno() : Ask a yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes')")
     print("exit_yesno() : Ask a yes-no confirmation before exitting. Returns an integer (0 - 'no' , 1 - 'yes')")
     print("custom_yesno(<string>) : Ask a custom yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes')")
-    print("ask_q(<string>) : Ask a question. Returns a string")
+    print("ask_ques(<string>) : Ask a question. Returns a string")
     print("menu(<string> , <list>) : Display a menu for the user. Items are automatically numbered\n")
     
 def greet():
