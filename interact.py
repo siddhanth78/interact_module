@@ -37,7 +37,7 @@ def exit_yesno():
     print()
     return con
 
-def ask_ques(q):
+def ques(q):
     ans = input(f"{q} : ")
     print()
     return ans
@@ -89,7 +89,7 @@ def interact():
     print("yesno() : Ask a yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes')")
     print("exit_yesno() : Ask a yes-no confirmation before exitting. Returns an integer (0 - 'no' , 1 - 'yes')")
     print("custom_yesno(<string>) : Ask a custom yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes')")
-    print("ask_ques(<string>) : Ask a question. Returns a string")
+    print("ques(<string>) : Ask a question. Returns a string")
     print("menu(<string> , <list>) : Display a menu for the user. Items are automatically numbered\n")
     
 def greet():
