@@ -76,7 +76,7 @@ def box(bst):
 
 
 def interact():
-    print("'interact' module")
+    print("\n'interact' module")
     print("Used for system-user interaction.")
     print("Functions :\n")
     print("error(<string>) : Display custom error message")
