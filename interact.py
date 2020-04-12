@@ -1,17 +1,71 @@
 import os
 import time
 
-def error(m="An error occured"):
-    print(f"ERROR : {m}")
+def error(m='An error occured',f=0,e=0):
+    if f == 0:
+        mode = False
+    elif f == 1:
+        mode = True
+    else:
+        mode = False
+        
+    if e == 0:
+        print(f"ERROR : {m}" , flush = mode)
+    elif e == 1:
+        print(f"ERROR : {m}" , flush = mode , end='')
+    else:
+        print(f"ERROR : {m}" , flush = mode)
 
-def warn(m="\n"):
-    print(f"WARNING : {m}")
+        
 
-def info(m="\n"):
-    print(f"INFO : {m}")
+def warn(m='\n',f=0,e=0):
+    if f == 0:
+        mode = False
+    elif f == 1:
+        mode = True
+    else:
+        mode = False
+        
+    if e == 0:
+        print(f"WARNING : {m}" , flush = mode)
+    elif e == 1:
+        print(f"WARNING : {m}" , flush = mode , end='')
+    else:
+        print(f"WARNING : {m}" , flush = mode)
 
-def tip(m="\n"):
-    print(f"TIP : {m}")
+        
+
+def info(m='\n',f=0,e=0):
+    if f == 0:
+        mode = False
+    elif f == 1:
+        mode = True
+    else:
+        mode = False
+        
+    if e == 0:
+        print(f"INFO : {m}" , flush = mode)
+    elif e == 1:
+        print(f"INFO : {m}" , flush = mode , end='')
+    else:
+        print(f"INFO : {m}" , flush = mode)
+
+        
+
+def tip(m='\n',f=0,e=0):
+    if f == 0:
+        mode = False
+    elif f == 1:
+        mode = True
+    else:
+        mode = False
+        
+    if e == 0:
+        print(f"TIP : {m}" , flush = mode)
+    elif e == 1:
+        print(f"TIP : {m}" , flush = mode , end='')
+    else:
+        print(f"TIP : {m}" , flush = mode)
 
 
 
@@ -68,6 +122,7 @@ def msg(m='\n',f=0,e=0):
         mode = True
     else:
         mode = False
+        
     if e == 0:
         print(f"{m}" , flush = mode)
     elif e == 1:
@@ -84,6 +139,7 @@ def star(m='\n',f=0,e=0):
         mode = True
     else:
         mode = False
+        
     if e == 0:
         print(f"*{m}" , flush = mode)
     elif e == 1:
