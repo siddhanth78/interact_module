@@ -1,19 +1,21 @@
 import os
 
-def error(e):
-    print(f"ERROR : {e}")
+def error(m="An error occured"):
+    print(f"ERROR : {m}")
 
-def warn(w):
-    print(f"WARNING : {w}")
+def warn(m="\n"):
+    print(f"WARNING : {m}")
 
-def info(i):
-    print(f"INFO : {i}")
+def info(m="\n"):
+    print(f"INFO : {m}")
 
-def tip(t):
-    print(f"TIP : {t}")
+def tip(m="\n"):
+    print(f"TIP : {m}")
 
-def custom_yesno(yn):
-    conf = input(f"{yn} (y/n) : ")
+
+
+def custom_yesno(m=" "):
+    conf = input(f"{m} (y/n) : ")
     if conf.lower().strip() in ['y' , 'yes']:
         con = 1
     elif conf.lower().strip() in ['n' , 'no']:
@@ -22,7 +24,9 @@ def custom_yesno(yn):
         con = 2
     print()
     return con
-    
+
+
+
 def yesno():
     conf = input("Confirm? (y/n) : ")
     if conf.lower().strip() in ['y' , 'yes']:
@@ -33,6 +37,8 @@ def yesno():
         con = 2
     print()
     return con
+
+
 
 def exit_yesno():
     conf = input(f"Exit from application? (y/n) : ")
@@ -45,19 +51,22 @@ def exit_yesno():
     print()
     return con
 
-def ques(q):
-    ans = input(f"{q} : ")
+
+
+def ques(m=" "):
+    ans = input(f"{m} : ")
     print()
     return ans
 
-def msg(m='',f=0,e=0):
+
+
+def msg(m='\n',f=0,e=0):
     if f == 0:
         mode = False
     elif f == 1:
         mode = True
     else:
         mode = False
-
     if e == 0:
         print(f"{m}" , flush = mode)
     elif e == 1:
@@ -65,10 +74,26 @@ def msg(m='',f=0,e=0):
     else:
         print(f"{m}" , flush = mode)
 
-def star(st):
-    print(f"*{st}")
 
-def menu(title,li):
+
+def star(m='\n',f=0,e=0):
+    if f == 0:
+        mode = False
+    elif f == 1:
+        mode = True
+    else:
+        mode = False
+    if e == 0:
+        print(f"*{m}" , flush = mode)
+    elif e == 1:
+        print(f"*{m}" , flush = mode , end='')
+    else:
+        print(f"*{m}" , flush = mode)
+
+
+
+def menu(title=" ",items=[]):
+    li = items
     if isinstance(li , list) == False:
         print("ArgTypeError : menu(<string> , <list>)")
         return
@@ -80,7 +105,9 @@ def menu(title,li):
         n+=1
     print("\n------"+"-"*len(title)+"------\n")
 
-def box(bst):
+
+
+def box(m=" "):
     li = bst.split("\n")
     maximum = 0
     for l in li:
@@ -88,36 +115,19 @@ def box(bst):
         if part > maximum:
             maximum = part
     print("+-"+"-"*maximum+"-+")
-    print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
-    print("| "+" "*maximum+" |")
     print("+-"+"-"*maximum+"-+")
+
+
 
 def clr():
     os.system('cls')
+    
 
-
-def interact():
-    print("\n'interact' module")
-    print("Used for system-user interaction.")
-    print("Functions :\n")
-    print("error(<string>) : Display custom error message")
-    print("warn(<string>) : Display custom warning message")
-    print("info(<string>) : Display custom information")
-    print("msg([m , f , e]) : Display custom message")
-    print("tip(<string>) : Display custom tip")
-    print("clr() : Clear terminal")
-    print("star(<string>) : Display custom starred message")
-    print("box(<string>) : Display custom boxed information")
-    print("yesno() : Ask a yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes' , 2 - none of them)")
-    print("exit_yesno() : Ask a yes-no confirmation before exitting. Returns an integer (0 - 'no' , 1 - 'yes' , 2 - none of them)")
-    print("custom_yesno(<string>) : Ask a custom yes-no confirmation. Returns an integer (0 - 'no' , 1 - 'yes' , 2 - none of them)")
-    print("ques(<string>) : Ask a question. Returns a string")
-    print("menu(<string> , <list>) : Display a menu for the user. Items are automatically numbered\n")
     
 def greet():
-    print("\nYou are using Interact. Run 'interact()' to know more.\n")
+    print("\nYou are using Interact.\n")
 
 greet()
 
