@@ -1,4 +1,5 @@
 import os
+import time
 
 def error(m="An error occured"):
     print(f"ERROR : {m}")
@@ -108,7 +109,7 @@ def menu(title=" ",items=[]):
 
 
 def box(m=" "):
-    li = bst.split("\n")
+    li = m.split("\n")
     maximum = 0
     for l in li:
         part = len(l)
@@ -127,7 +128,10 @@ def clr():
 
     
 def greet():
-    print("\nYou are using Interact.\n")
+    time.sleep(1)
+    print("\nYou are using Interact.\n",flush=True)
+    time.sleep(4)
+    os.system('cls')
 
 greet()
 
