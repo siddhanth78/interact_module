@@ -186,8 +186,9 @@ def clr():
 def greet():
     time.sleep(1)
     print("\nYou are using Interact.\n",flush=True)
-    time.sleep(4)
+    time.sleep(3)
     os.system('cls')
+    time.sleep(2)
 
 greet()
 
