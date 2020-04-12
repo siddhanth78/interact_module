@@ -181,9 +181,11 @@ def box(m=" "):
 
 
 
-def login(outfile="",sqluser="",sqlpass="",outdb="",dbtable=""):
+def login(sqluser="",sqlpass="",checkdb="",dbtable=""):
     usern = ""
     passw = ""
+    valid = 0
+    
     while True:
         usern = input("Username : ")
         if usern.strip() == "":
@@ -196,14 +198,56 @@ def login(outfile="",sqluser="",sqlpass="",outdb="",dbtable=""):
             print("\nPassword must be filled.\n")
             continue
         break
-    
-    if outfile.strip()=="":
+
+    if checkdb.strip()=="":
         pass
     else:
-        file = open(outfile.strip() , 'a')
-        file.write(f"Username : {usern}\nPassword : {passw}\n\n")
-        file.close()
-        print("\nYou have been registered. Welcome.\n")
+        try:
+            mydb = mysql.connector.connect(
+                host = "localhost",
+                user = sqluser.strip(),
+                passwd = sqlpass,
+                database = checkdb.strip()
+                )
+
+            cursor = mydb.cursor()
+        except:
+            print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+            valid = 0
+        else:
+            cursor.execute(f"create table if not exists {dbtable.strip()} (Username varchar(20) not null unique , Password varchar(20) not null unique)")
+            cursor.execute(f"select * from {dbtable.strip()}")
+            for i in cursor:
+                us,pa = i
+                if usern == us and passw == pa:
+                    print("\nCredentials valid.\n")
+                    valid = 1
+                    break
+            else:
+                print("\nInvalid credentials.\n")
+                valid = 0
+                
+    return(usern , passw ,valid)
+
+
+
+def sign_up(sqluser="",sqlpass="",outdb="",dbtable=""):
+    usern = ""
+    passw = ""
+    valid = 0
+
+    while True:
+        usern = input("Username : ")
+        if usern.strip() == "":
+            print("\nUsername must be filled.\n")
+            continue
+        break
+    while True:
+        passw = getpass.getpass(prompt="Password : ")
+        if passw.strip() == "":
+            print("\nPassword must be filled.\n")
+            continue
+        break
 
     if outdb.strip()=="":
         pass
@@ -218,18 +262,21 @@ def login(outfile="",sqluser="",sqlpass="",outdb="",dbtable=""):
 
             cursor = mydb.cursor()
         except:
-            print("\nError. Couldn't connect to database.\n")
+            print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+            valid = 0
         else:
             try:
-                cursor.execute(f"create table if not exists {dbtable} (Username varchar(20) not null unique , Password varchar(20) not null unique)")
-                cursor.execute(f"insert into {dbtable} values('{usern}','{passw}')")
+                cursor.execute(f"create table if not exists {dbtable.strip()} (Username varchar(20) not null unique , Password varchar(20) not null unique)")
+                cursor.execute(f"insert into {dbtable.strip()} values('{usern}','{passw}')")
                 mydb.commit()
             except:
-                print("\nError. Couldn't register. Possibly because username/password already exists or invalid username/password.\n")
+                print("\nError. Couldn't register. Possibly because username/password already exists or invalid username/password (No special characters other than '_' allowed).\n")
+                valid = 0
             else:
                 print("\nYou have been registered. Welcome.\n")
+                valid = 1
                 
-    return(usern , passw)
+    return(usern , passw ,valid)
     
 
 
@@ -240,7 +287,7 @@ def clr():
     
 def greet():
     time.sleep(1)
-    print("\nINTERACT 1.1.2\n",flush=True)
+    print("\nINTERACT 1.1.4\n",flush=True)
     time.sleep(3)
     os.system('cls')
     time.sleep(2)
