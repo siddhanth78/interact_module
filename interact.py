@@ -111,7 +111,7 @@ def exit_yesno():
 
 
 
-def ques(m=" "):
+def prompt_(m=" "):
     ans = input(f"{m} : ")
     print()
     return ans
