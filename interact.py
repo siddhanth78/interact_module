@@ -1,5 +1,8 @@
 import os
+import os.path
 import time
+import getpass
+import mysql.connector
 
 def error(m='An error occured',f=0,e=0):
     if f == 0:
@@ -178,6 +181,58 @@ def box(m=" "):
 
 
 
+def login(outfile="",sqluser="",sqlpass="",outdb="",dbtable=""):
+    usern = ""
+    passw = ""
+    while True:
+        usern = input("Username : ")
+        if usern.strip() == "":
+            print("\nUsername must be filled.\n")
+            continue
+        break
+    while True:
+        passw = getpass.getpass(prompt="Password : ")
+        if passw.strip() == "":
+            print("\nPassword must be filled.\n")
+            continue
+        break
+    
+    if outfile.strip()=="":
+        pass
+    else:
+        file = open(outfile.strip() , 'a')
+        file.write(f"Username : {usern}\nPassword : {passw}\n\n")
+        file.close()
+        print("\nYou have been registered. Welcome.\n")
+
+    if outdb.strip()=="":
+        pass
+    else:
+        try:
+            mydb = mysql.connector.connect(
+                host = "localhost",
+                user = sqluser.strip(),
+                passwd = sqlpass,
+                database = outdb.strip()
+                )
+
+            cursor = mydb.cursor()
+        except:
+            print("\nError. Couldn't connect to database.\n")
+        else:
+            try:
+                cursor.execute(f"create table if not exists {dbtable} (Username varchar(20) not null unique , Password varchar(20) not null unique)")
+                cursor.execute(f"insert into {dbtable} values('{usern}','{passw}')")
+                mydb.commit()
+            except:
+                print("\nError. Couldn't register. Possibly because username/password already exists or invalid username/password.\n")
+            else:
+                print("\nYou have been registered. Welcome.\n")
+                
+    return(usern , passw)
+    
+
+
 def clr():
     os.system('cls')
     
@@ -185,7 +240,7 @@ def clr():
     
 def greet():
     time.sleep(1)
-    print("\nYou are using Interact.\n",flush=True)
+    print("\nINTERACT 1.1.2\n",flush=True)
     time.sleep(3)
     os.system('cls')
     time.sleep(2)
