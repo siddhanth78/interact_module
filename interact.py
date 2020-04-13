@@ -19,7 +19,7 @@ def error(m='An error occured.'):
     print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
-    print("+-"+"-"*maximum+"-+")
+    print("+-"+"-"*maximum+"-+\n")
 
         
 
@@ -34,7 +34,7 @@ def warn(m=' '*9):
     print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
-    print("+-"+"-"*maximum+"-+")
+    print("+-"+"-"*maximum+"-+\n")
 
         
 
@@ -49,7 +49,7 @@ def info(m=' '*6):
     print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
-    print("+-"+"-"*maximum+"-+")
+    print("+-"+"-"*maximum+"-+\n")
 
         
 
@@ -64,7 +64,7 @@ def tip(m=' '*5):
     print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
-    print("+-"+"-"*maximum+"-+")
+    print("+-"+"-"*maximum+"-+\n")
 
 
 
@@ -114,7 +114,7 @@ def prompt_(m=" "):
 
 
 
-def msg(m='\n'):
+def msg(m='\n',f=0,e='\n'):
     if f == 0:
         mode = False
     elif f == 1:
@@ -126,7 +126,7 @@ def msg(m='\n'):
 
 
 
-def star(m='\n'):
+def star(m='\n',f=0,e='\n'):
     if f == 0:
         mode = False
     elif f == 1:
@@ -163,7 +163,7 @@ def box(m=" "):
     print("+-"+"-"*maximum+"-+")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
-    print("+-"+"-"*maximum+"-+")
+    print("+-"+"-"*maximum+"-+\n")
 
 
 
