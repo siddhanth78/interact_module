@@ -12,6 +12,8 @@ def error(m='An error occured.'):
     li = m.split("\n")
     maximum = 0
     for l in li:
+        if len(l) < 9:
+            l = l+" "*(9-len(l))
         part = len(l)
         if part > maximum:
             maximum = part
@@ -27,6 +29,8 @@ def warn(m=' '*9):
     li = m.split("\n")
     maximum = 0
     for l in li:
+        if len(l) < 11:
+            l = l+" "*(11-len(l))
         part = len(l)
         if part > maximum:
             maximum = part
@@ -42,6 +46,8 @@ def info(m=' '*6):
     li = m.split("\n")
     maximum = 0
     for l in li:
+        if len(l) < 8:
+            l = l+" "*(8-len(l))
         part = len(l)
         if part > maximum:
             maximum = part
@@ -57,6 +63,8 @@ def tip(m=' '*5):
     li = m.split("\n")
     maximum = 0
     for l in li:
+        if len(l) < 7:
+            l = l+" "*(7-len(l))
         part = len(l)
         if part > maximum:
             maximum = part
@@ -279,11 +287,9 @@ def clr():
 
     
 def greet():
-    time.sleep(1)
-    print("\nINTERACT 1.1.4\n",flush=True)
-    time.sleep(3)
     os.system('cls')
-    time.sleep(2)
+    print("INTERACT 1.1.4\n\n",flush=True)
+
 
 greet()
 
