@@ -241,6 +241,47 @@ def login(sqluser="",sqlpass="",checkdb="",dbtable="credentials"):
 
 
 
+def get_items(sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="*",wherecol="",pattern=""):
+    itemlist = []
+    try:
+        mydb = mysql.connector.connect(
+            host = "localhost",
+            user = sqluser.strip(),
+            passwd = sqlpass,
+            database = checkdb.strip()
+            )
+
+        cursor = mydb.cursor()
+    except:
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        return
+    else:
+        if wherecol.strip()=="":
+            try:
+                cursor.execute(f"select {reqcol.strip()} from {dbtable.strip()}")
+            except:
+                print("\nError. Check your arguments again.\n")
+                return
+            else:
+                for item in cursor:
+                    itemlist.append(item)
+                return itemlist
+        else:
+            if pattern.strip()=="":
+                print("\nPattern required.\n")
+                return
+            else:
+                try:
+                    cursor.execute(f"select {reqcol.strip()} from {dbtable.strip()} where {wherecol.strip()} like '{pattern}'")
+                except:
+                    print("\nError. Check your arguments again.\n")
+                    return
+                else:
+                    for item in cursor:
+                        itemlist.append(item)
+                    return itemlist
+
+
 def sign_up(sqluser="",sqlpass="",outdb="",dbtable="credentials"):
     usern = ""
     passw = ""
