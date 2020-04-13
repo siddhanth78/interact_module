@@ -3,9 +3,10 @@ import os.path
 import time
 import getpass
 import mysql.connector
+import random
 
 
-def error(m='An error occured',f=0,e=0):
+def error(m='An error occured.',f=0,e=0):
     if f == 0:
         mode = False
     elif f == 1:
@@ -152,7 +153,7 @@ def box(m=" "):
 
 
 
-def login(sqluser="",sqlpass="",checkdb="",dbtable=""):
+def login(sqluser="",sqlpass="",checkdb="",dbtable="credentials"):
     usern = ""
     passw = ""
     valid = 0
@@ -186,10 +187,10 @@ def login(sqluser="",sqlpass="",checkdb="",dbtable=""):
             print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
             valid = 0
         else:
-            cursor.execute(f"create table if not exists {dbtable.strip()} (Username varchar(20) not null unique , Password varchar(20) not null unique)")
+            cursor.execute(f"create table if not exists {dbtable.strip()} (m_id varchar(5) not null unique,Username varchar(20) not null unique , Password varchar(20) not null unique)")
             cursor.execute(f"select * from {dbtable.strip()}")
             for i in cursor:
-                us,pa = i
+                mid,us,pa = i
                 if usern == us and passw == pa:
                     print("\nCredentials valid.\n")
                     valid = 1
@@ -198,11 +199,11 @@ def login(sqluser="",sqlpass="",checkdb="",dbtable=""):
                 print("\nInvalid credentials.\n")
                 valid = 0
                 
-    return(usern , passw ,valid)
+    return(mid , usern , passw ,valid)
 
 
 
-def sign_up(sqluser="",sqlpass="",outdb="",dbtable=""):
+def sign_up(sqluser="",sqlpass="",outdb="",dbtable="credentials"):
     usern = ""
     passw = ""
     valid = 0
@@ -237,17 +238,24 @@ def sign_up(sqluser="",sqlpass="",outdb="",dbtable=""):
             valid = 0
         else:
             try:
-                cursor.execute(f"create table if not exists {dbtable.strip()} (Username varchar(20) not null unique , Password varchar(20) not null unique)")
-                cursor.execute(f"insert into {dbtable.strip()} values('{usern}','{passw}')")
+                mid=""
+                no1=random.randint(0,9)
+                no2=random.randint(10,99)
+                ch1=random.randint(65,90)
+                ch2=random.randint(65,90)
+                mid=str(chr(ch1))+str(no1)+str(chr(ch2))+str(no2)
+                print(f"\nYour m_id : {mid}\n")
+                cursor.execute(f"create table if not exists {dbtable.strip()} (m_id varchar(5) not null unique,Username varchar(20) not null unique , Password varchar(20) not null unique)")
+                cursor.execute(f"insert into {dbtable.strip()} values('{mid}','{usern}','{passw}')")
                 mydb.commit()
             except:
-                print("\nError. Couldn't register. Possibly because username/password already exists or invalid username/password (No special characters other than '_' allowed).\n")
+                print("\nError. Couldn't register. Possibly because username/password/m_id already exists or invalid username/password (No special characters other than '_' allowed).\n")
                 valid = 0
             else:
                 print("\nYou have been registered. Welcome.\n")
                 valid = 1
                 
-    return(usern , passw ,valid)
+    return(mid , usern , passw ,valid)
     
 
 
