@@ -6,51 +6,65 @@ import mysql.connector
 import random
 
 
-def error(m='An error occured.',f=0,e=0):
-    if f == 0:
-        mode = False
-    elif f == 1:
-        mode = True
-    else:
-        mode = False
-        
-    print(f"ERROR : {m}" , flush = mode , end=e)
+def error(m='An error occured.'):
+    if m.strip() == "":
+        m=' '*7
+    li = m.split("\n")
+    maximum = 0
+    for l in li:
+        part = len(l)
+        if part > maximum:
+            maximum = part
+    print("+-ERROR"+"-"*(maximum-5)+"-+")
+    print("| "+" "*maximum+" |")
+    for p in li:
+        print("| "+p+" "*(maximum-len(p))+" |")
+    print("+-"+"-"*maximum+"-+")
 
         
 
-def warn(m='\n',f=0,e='\n'):
-    if f == 0:
-        mode = False
-    elif f == 1:
-        mode = True
-    else:
-        mode = False
-        
-    print(f"WARNING : {m}" , flush = mode , end=e)
+def warn(m=' '*9):
+    li = m.split("\n")
+    maximum = 0
+    for l in li:
+        part = len(l)
+        if part > maximum:
+            maximum = part
+    print("+-WARNING"+"-"*(maximum-7)+"-+")
+    print("| "+" "*maximum+" |")
+    for p in li:
+        print("| "+p+" "*(maximum-len(p))+" |")
+    print("+-"+"-"*maximum+"-+")
 
         
 
-def info(m='\n',f=0,e='\n'):
-    if f == 0:
-        mode = False
-    elif f == 1:
-        mode = True
-    else:
-        mode = False
-        
-    print(f"INFO : {m}" , flush = mode , end=e)
+def info(m=' '*6):
+    li = m.split("\n")
+    maximum = 0
+    for l in li:
+        part = len(l)
+        if part > maximum:
+            maximum = part
+    print("+-INFO"+"-"*(maximum-4)+"-+")
+    print("| "+" "*maximum+" |")
+    for p in li:
+        print("| "+p+" "*(maximum-len(p))+" |")
+    print("+-"+"-"*maximum+"-+")
 
         
 
-def tip(m='\n',f=0,e='\n'):
-    if f == 0:
-        mode = False
-    elif f == 1:
-        mode = True
-    else:
-        mode = False
-        
-    print(f"TIP : {m}" , flush = mode , end=e)
+def tip(m=' '*5):
+    li = m.split("\n")
+    maximum = 0
+    for l in li:
+        part = len(l)
+        if part > maximum:
+            maximum = part
+    print("+-TIP"+"-"*(maximum-3)+"-+")
+    print("| "+" "*maximum+" |")
+    for p in li:
+        print("| "+p+" "*(maximum-len(p))+" |")
+    print("+-"+"-"*maximum+"-+")
 
 
 
@@ -100,7 +114,7 @@ def prompt_(m=" "):
 
 
 
-def msg(m='\n',f=0,e='\n'):
+def msg(m='\n'):
     if f == 0:
         mode = False
     elif f == 1:
@@ -112,7 +126,7 @@ def msg(m='\n',f=0,e='\n'):
 
 
 
-def star(m='\n',f=0,e='\n'):
+def star(m='\n'):
     if f == 0:
         mode = False
     elif f == 1:
