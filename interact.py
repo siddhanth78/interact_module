@@ -4,6 +4,7 @@ import time
 import getpass
 import mysql.connector
 
+
 def error(m='An error occured',f=0,e=0):
     if f == 0:
         mode = False
@@ -12,16 +13,11 @@ def error(m='An error occured',f=0,e=0):
     else:
         mode = False
         
-    if e == 0:
-        print(f"ERROR : {m}" , flush = mode)
-    elif e == 1:
-        print(f"ERROR : {m}" , flush = mode , end='')
-    else:
-        print(f"ERROR : {m}" , flush = mode)
+    print(f"ERROR : {m}" , flush = mode , end=e)
 
         
 
-def warn(m='\n',f=0,e=0):
+def warn(m='\n',f=0,e='\n'):
     if f == 0:
         mode = False
     elif f == 1:
@@ -29,16 +25,11 @@ def warn(m='\n',f=0,e=0):
     else:
         mode = False
         
-    if e == 0:
-        print(f"WARNING : {m}" , flush = mode)
-    elif e == 1:
-        print(f"WARNING : {m}" , flush = mode , end='')
-    else:
-        print(f"WARNING : {m}" , flush = mode)
+    print(f"WARNING : {m}" , flush = mode , end=e)
 
         
 
-def info(m='\n',f=0,e=0):
+def info(m='\n',f=0,e='\n'):
     if f == 0:
         mode = False
     elif f == 1:
@@ -46,16 +37,11 @@ def info(m='\n',f=0,e=0):
     else:
         mode = False
         
-    if e == 0:
-        print(f"INFO : {m}" , flush = mode)
-    elif e == 1:
-        print(f"INFO : {m}" , flush = mode , end='')
-    else:
-        print(f"INFO : {m}" , flush = mode)
+    print(f"INFO : {m}" , flush = mode , end=e)
 
         
 
-def tip(m='\n',f=0,e=0):
+def tip(m='\n',f=0,e='\n'):
     if f == 0:
         mode = False
     elif f == 1:
@@ -63,12 +49,7 @@ def tip(m='\n',f=0,e=0):
     else:
         mode = False
         
-    if e == 0:
-        print(f"TIP : {m}" , flush = mode)
-    elif e == 1:
-        print(f"TIP : {m}" , flush = mode , end='')
-    else:
-        print(f"TIP : {m}" , flush = mode)
+    print(f"TIP : {m}" , flush = mode , end=e)
 
 
 
@@ -118,7 +99,7 @@ def prompt_(m=" "):
 
 
 
-def msg(m='\n',f=0,e=0):
+def msg(m='\n',f=0,e='\n'):
     if f == 0:
         mode = False
     elif f == 1:
@@ -126,16 +107,11 @@ def msg(m='\n',f=0,e=0):
     else:
         mode = False
         
-    if e == 0:
-        print(f"{m}" , flush = mode)
-    elif e == 1:
-        print(f"{m}" , flush = mode , end='')
-    else:
-        print(f"{m}" , flush = mode)
+    print(f"{m}" , flush = mode , end=e)
 
 
 
-def star(m='\n',f=0,e=0):
+def star(m='\n',f=0,e='\n'):
     if f == 0:
         mode = False
     elif f == 1:
@@ -143,12 +119,7 @@ def star(m='\n',f=0,e=0):
     else:
         mode = False
         
-    if e == 0:
-        print(f"*{m}" , flush = mode)
-    elif e == 1:
-        print(f"*{m}" , flush = mode , end='')
-    else:
-        print(f"*{m}" , flush = mode)
+    print(f"*{m}" , flush = mode , end=e)
 
 
 
