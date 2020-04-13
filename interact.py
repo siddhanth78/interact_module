@@ -242,6 +242,17 @@ def sign_up(sqluser="",sqlpass="",outdb="",dbtable="credentials"):
             print("\nPassword must be filled.\n")
             continue
         break
+    while True:
+        repassw = getpass.getpass(prompt="Confirm password : ")
+        if repassw.strip() == "":
+            print("\nPassword must be filled.\n")
+            continue
+        
+        if repassw != passw:
+            print("\nPasswords do not match.\n")
+            continue
+        elif repassw == passw:
+            break
 
     if outdb.strip()=="":
         pass
