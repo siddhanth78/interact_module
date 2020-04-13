@@ -165,7 +165,7 @@ def menu(title=" ",items=[],reuse=0):
         for l in li:
             usermenu+=f"{n}. {l}\n"
             n+=1
-        usermenu+=("\n------"+"-"*len(title)+"------\n")
+        usermenu+="\n------"+"-"*len(title)+"------\n\n"
         return usermenu
     else:
         print(f"\n------{title}------\n")
