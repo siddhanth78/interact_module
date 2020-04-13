@@ -146,18 +146,34 @@ def star(m='\n',f=0,e='\n'):
 
 
 
-def menu(title=" ",items=[]):
+def menu(title=" ",items=[],reuse=0):
     li = items
     if isinstance(li , list) == False:
-        print("ArgTypeError : menu(<string> , <list>)")
+        print("ArgTypeError : menu(<string> , <list> , reuse)")
         return
     n = 1
     li = list(li)
-    print(f"\n------{title}------\n")
-    for l in li:
-        print(f"{n}. {l}")
-        n+=1
-    print("\n------"+"-"*len(title)+"------\n")
+    if reuse==0:
+        print(f"\n------{title}------\n")
+        for l in li:
+            print(f"{n}. {l}")
+            n+=1
+        print("\n------"+"-"*len(title)+"------\n")
+        return
+    elif reuse==1:
+        usermenu=f"\n------{title}------\n\n"
+        for l in li:
+            usermenu+=f"{n}. {l}\n"
+            n+=1
+        usermenu+=("\n------"+"-"*len(title)+"------\n")
+        return usermenu
+    else:
+        print(f"\n------{title}------\n")
+        for l in li:
+            print(f"{n}. {l}")
+            n+=1
+        print("\n------"+"-"*len(title)+"------\n")
+        return
 
 
 
