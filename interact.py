@@ -282,6 +282,141 @@ def get_items(sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="*",wherecol=""
                     return itemlist
 
 
+
+def update(sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="",newdata="",wherecol="",pattern=""):
+    try:
+        mydb = mysql.connector.connect(
+            host = "localhost",
+            user = sqluser.strip(),
+            passwd = sqlpass,
+            database = checkdb.strip()
+            )
+
+        cursor = mydb.cursor()
+    except:
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        return
+    else:
+        if str(newdata).strip() == "":
+            print("\nError. New data can't be blank.\n")
+            return
+        
+        if wherecol.strip()=="":
+            try:
+                cursor.execute(f"update {dbtable.strip()} set {reqcol.strip()} = {newdata}")
+                mydb.commit()
+            except:
+                print("\nError. Check your arguments again.\n")
+                return
+            else:
+                return
+        else:
+            if pattern.strip()=="":
+                print("\nPattern required.\n")
+                return
+            else:
+                try:
+                    cursor.execute(f"update {dbtable.strip()} set {reqcol.strip()} = {newdata} where {wherecol.strip()} like '{pattern}'")
+                    mydb.commit()
+                except:
+                    print("\nError. Check your arguments again.\n")
+                    return
+                else:
+                    return
+
+
+def multi_update(sqluser="",sqlpass="",checkdb="",updates=[]):
+    if isinstance(updates , list) == False:
+        print("ArgTypeError : multi_update(<string> , <string> , <string> , <list>)")
+        return
+    try:
+        mydb = mysql.connector.connect(
+            host = "localhost",
+            user = sqluser.strip(),
+            passwd = sqlpass,
+            database = checkdb.strip()
+            )
+
+        cursor = mydb.cursor()
+    except:
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        return
+    else:
+        number = 1
+        for up in updates:
+            try:
+                dbtable,reqcol,newdata,wherecol,pattern = up
+            except:
+                print(f"\nError in query {number}. Probably missing arguments or invalid data.\n")
+                print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
+                      "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
+                      "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
+                      "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
+                      "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
+                      "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                number+=1
+                continue
+            else:
+                pass
+            if str(newdata).strip() == "":
+                print(f"\nError in query {number}. New data can't be blank.\n")
+                print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
+                      "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
+                      "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
+                      "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
+                      "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
+                      "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                number+=1
+                continue
+        
+            if wherecol.strip()=="":
+                try:
+                    cursor.execute(f"update {dbtable.strip()} set {reqcol.strip()} = {newdata}")
+                    mydb.commit()
+                except:
+                    print(f"\nError in query {number}. Check your arguments again.\n")
+                    print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
+                      "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
+                      "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
+                      "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
+                      "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
+                      "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                    number+=1
+                    continue
+                else:
+                    number+=1
+                    continue
+            else:
+                if pattern.strip()=="":
+                    print(f"\nError in query {number}. Pattern required.\n")
+                    print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
+                      "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
+                      "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
+                      "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
+                      "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
+                      "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                    number+=1
+                    continue
+                else:
+                    try:
+                        cursor.execute(f"update {dbtable.strip()} set {reqcol.strip()} = {newdata} where {wherecol.strip()} like '{pattern}'")
+                        mydb.commit()
+                    except:
+                        print(f"\nError in query {number}. Check your arguments again.\n")
+                        print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
+                          "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
+                          "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
+                          "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
+                          "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
+                          "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                        number+=1
+                        continue
+                    else:
+                        number+=1
+                        continue
+                
+
+
 def sign_up(sqluser="",sqlpass="",outdb="",dbtable="credentials"):
     usern = ""
     passw = ""
@@ -356,7 +491,7 @@ def clr():
     
 def greet():
     os.system('cls')
-    print("INTERACT 1.1.4\n\n",flush=True)
+    print("INTERACT 1.2.1\n\n",flush=True)
 
 
 greet()
