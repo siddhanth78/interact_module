@@ -38,7 +38,9 @@ Best part about sql connectivity using this module, you don't need to import any
                                                      <item1>
                                                      <item2> ...
                                                      ... <item n>
-                                                  ], [reuse=0])                        : Creates a menu with the desired title and items. Default reuse : 0. If reuse=1, menu function will return a string. It can be stored in a variable.                                                                                                                                                                                          
+                                                  ], [reuse=0])     : Creates a menu with the desired title and items. Default reuse : 0. If reuse=1, menu function will return a string. It can be stored in a variable.
+
+
 15.prompt_(m=*string) : Prompts the user. Returns a string.
 
 16.yesno() : Asks the user for a yes/no confirmation. Returns an integer ('y' - 1 , 'n' - 0 , default - 2).
