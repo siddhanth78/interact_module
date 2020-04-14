@@ -12,7 +12,9 @@ def error(m='An error occured.'):
     if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
-        li = m
+        li=[]
+        for it in m:
+            li.append(it.strip("\n"))
     else:
         li = str(m)
     maximum = 0
@@ -34,7 +36,9 @@ def warn(m=' '*9):
     if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
-        li = m
+        li=[]
+        for it in m:
+            li.append(it.strip("\n"))
     else:
         li = str(m)
     maximum = 0
@@ -56,7 +60,9 @@ def info(m=' '*6):
     if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
-        li = m
+        li=[]
+        for it in m:
+            li.append(it.strip("\n"))
     else:
         li = str(m)
     maximum = 0
@@ -78,7 +84,9 @@ def tip(m=' '*5):
     if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
-        li = m
+        li=[]
+        for it in m:
+            li.append(it.strip("\n"))
     else:
         li = str(m)
     maximum = 0
@@ -201,7 +209,9 @@ def box(m=" "):
     if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
-        li = m
+        li=[]
+        for it in m:
+            li.append(it.strip("\n"))
     else:
         li = str(m)
     maximum = 0
