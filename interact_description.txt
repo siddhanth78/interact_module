@@ -50,3 +50,12 @@ Best part about sql connectivity using this module, you don't need to import any
 17.exit_yesno() : Asks the user for a yes/no confirmation when he/she wants to exit. Returns an integer ('y' - 1 , 'n' - 0 , default-2).
 
 18.custom_yesno(m=*string) : Asks the user for a yes/no confirmation with a custom prompt. Returns an integer ('y'-1 ,'n'-0, default-2).
+
+Even file maipulation is automated. No need to import any os module.
+
+19.readfile(filepath=*string , [return_="whole"]) : Returns file contents. return_="lines" - Returns a list of lines in the file.
+
+19.writefile(filepath=*string, newdata=*anydatatype , [mode="append"]) : Writes data into a file. mode="overwrite" : Overwrites file
+                                                                                                                     contents.
+                                                                                                                     
+20.deletefile(filepath=*string) : Deletes the file.
