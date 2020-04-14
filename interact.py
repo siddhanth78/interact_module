@@ -191,7 +191,7 @@ def box(m=" "):
 
 
 
-def login(sqluser="",sqlpass="",checkdb="",dbtable="credentials"):
+def login(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="credentials"):
     usern = ""
     passw = ""
     valid = 0
@@ -214,7 +214,7 @@ def login(sqluser="",sqlpass="",checkdb="",dbtable="credentials"):
     else:
         try:
             mydb = mysql.connector.connect(
-                host = "localhost",
+                host = sqlhost.strip(),
                 user = sqluser.strip(),
                 passwd = sqlpass,
                 database = checkdb.strip()
@@ -241,11 +241,11 @@ def login(sqluser="",sqlpass="",checkdb="",dbtable="credentials"):
 
 
 
-def get_items(sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="*",wherecol="",pattern=""):
+def get_items(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="*",wherecol="",pattern=""):
     itemlist = []
     try:
         mydb = mysql.connector.connect(
-            host = "localhost",
+            host = sqlhost.strip(),
             user = sqluser.strip(),
             passwd = sqlpass,
             database = checkdb.strip()
@@ -283,10 +283,10 @@ def get_items(sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="*",wherecol=""
 
 
 
-def update(sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="",newdata="",wherecol="",pattern=""):
+def update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="",newdata="",wherecol="",pattern=""):
     try:
         mydb = mysql.connector.connect(
-            host = "localhost",
+            host = sqlhost.strip(),
             user = sqluser.strip(),
             passwd = sqlpass,
             database = checkdb.strip()
@@ -325,13 +325,13 @@ def update(sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="",newdata="",wher
                     return
 
 
-def multi_update(sqluser="",sqlpass="",checkdb="",updates=[]):
+def multi_update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",updates=[]):
     if isinstance(updates , list) == False:
         print("ArgTypeError : multi_update(<string> , <string> , <string> , <list>)")
         return
     try:
         mydb = mysql.connector.connect(
-            host = "localhost",
+            host = sqlhost.strip(),
             user = sqluser.strip(),
             passwd = sqlpass,
             database = checkdb.strip()
@@ -420,7 +420,7 @@ def multi_update(sqluser="",sqlpass="",checkdb="",updates=[]):
                 
 
 
-def sign_up(sqluser="",sqlpass="",outdb="",dbtable="credentials"):
+def sign_up(sqlhost="localhost",sqluser="",sqlpass="",outdb="",dbtable="credentials"):
     usern = ""
     passw = ""
     valid = 0
@@ -454,7 +454,7 @@ def sign_up(sqluser="",sqlpass="",outdb="",dbtable="credentials"):
     else:
         try:
             mydb = mysql.connector.connect(
-                host = "localhost",
+                host = sqlhost.strip(),
                 user = sqluser.strip(),
                 passwd = sqlpass,
                 database = outdb.strip()
