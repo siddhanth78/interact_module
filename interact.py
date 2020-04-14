@@ -6,6 +6,14 @@ import mysql.connector
 import random
 
 
+
+syner = ("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
+         "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
+         "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
+         "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
+         "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
+         "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+
 def error(m='An error occured.'):
     if m.strip() == "":
         m=' '*7
@@ -361,6 +369,7 @@ def update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="",reqco
 
 
 def multi_update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",updates=[]):
+    global syner
     if isinstance(updates , list) == False:
         print("ArgTypeError : multi_update(<string> , <string> , <string> , <list>)")
         return
@@ -386,24 +395,14 @@ def multi_update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",updates=[]
                     dbtable,reqcol,newdata,wherecol,pattern = up
             except:
                 print(f"\nError in query {number}. Probably missing arguments or invalid data.\n")
-                print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
-                      "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
-                      "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
-                      "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
-                      "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
-                      "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                print(syner)
                 number+=1
                 continue
             else:
                 pass
             if str(newdata).strip() == "":
                 print(f"\nError in query {number}. New data can't be blank.\n")
-                print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
-                      "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
-                      "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
-                      "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
-                      "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
-                      "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                print(syner)
                 number+=1
                 continue
         
@@ -413,12 +412,7 @@ def multi_update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",updates=[]
                     mydb.commit()
                 except:
                     print(f"\nError in query {number}. Check your arguments again.\n")
-                    print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
-                      "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
-                      "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
-                      "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
-                      "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
-                      "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                    print(syner)
                     number+=1
                     continue
                 else:
@@ -427,12 +421,7 @@ def multi_update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",updates=[]
             else:
                 if pattern.strip()=="":
                     print(f"\nError in query {number}. Pattern required.\n")
-                    print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
-                      "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
-                      "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
-                      "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
-                      "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
-                      "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                    print(syner)
                     number+=1
                     continue
                 else:
@@ -441,12 +430,7 @@ def multi_update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",updates=[]
                         mydb.commit()
                     except:
                         print(f"\nError in query {number}. Check your arguments again.\n")
-                        print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
-                          "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
-                          "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
-                          "<conditioncolumn2 (can be blank by entering '')>,<pattern2> (can be blank by entering '')),\n"
-                          "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
-                          "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
+                        print(syner)
                         number+=1
                         continue
                     else:
@@ -524,9 +508,67 @@ def sign_up(sqlhost="localhost",sqluser="",sqlpass="",outdb="",dbtable="credenti
 
 def clr():
     os.system('cls')
-    
 
-    
+
+
+def readfile(filepath="",return_="whole"):
+    try:
+        file = open(filepath,'r')
+        file.close()
+    except:
+        print("\nError. Either file doesn't exist or an error occured.\n")
+        return
+    else:
+        file = open(filepath,'r')
+        if return_ == "whole":
+            data=file.read()
+            file.close()
+            return data
+        elif return_ == "lines":
+            data=file.readlines()
+            file.close()
+            return data
+        else:
+            data=file.read()
+            file.close()
+            return data
+
+
+def writefile(filepath="",newdata="",mode="append"):
+    try:
+        file = open(filepath,'r')
+        file.close()
+    except:
+        print("\nError. Either file doesn't exist or an error occured.\n")
+        return
+    else:
+        if mode == "append":
+            file = open(filepath,'a')
+            file.write(newdata)
+            file.close()
+        elif mode == "overwrite":
+            file = open(filepath,'w')
+            file.write(newdata)
+            file.close()
+        else:
+            file = open(filepath,'a')
+            file.write(newdata)
+            file.close()
+
+
+
+def deletefile(filepath=""):
+    try:
+        file = open(filepath,'r')
+        file.close()
+    except:
+        print("\nError. Either file doesn't exist or an error occured.\n")
+        return
+    else:
+        os.remove(filepath)
+            
+            
+        
 def greet():
     os.system('cls')
     print("INTERACT 1.2.1. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
