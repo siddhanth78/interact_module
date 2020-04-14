@@ -345,7 +345,10 @@ def multi_update(sqluser="",sqlpass="",checkdb="",updates=[]):
         number = 1
         for up in updates:
             try:
-                dbtable,reqcol,newdata,wherecol,pattern = up
+                if len(up)==3:
+                    dbtable,reqcol,newdata = up
+                elif len(up)==5:
+                    dbtable,reqcol,newdata,wherecol,pattern = up
             except:
                 print(f"\nError in query {number}. Probably missing arguments or invalid data.\n")
                 print("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
@@ -369,7 +372,7 @@ def multi_update(sqluser="",sqlpass="",checkdb="",updates=[]):
                 number+=1
                 continue
         
-            if wherecol.strip()=="":
+            if len(up)==3:
                 try:
                     cursor.execute(f"update {dbtable.strip()} set {reqcol.strip()} = {newdata}")
                     mydb.commit()
