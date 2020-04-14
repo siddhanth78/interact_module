@@ -14,6 +14,8 @@ Functions :
 6.star(m=*string) : Display a starred message to the user.
 7.box(m=*string) : Display a boxed message to the user.
 
+Best part about sql connectivity using this module, you don't need to import any sql module. It is auto-connected.
+
 8.sign_up([sqlhost=*string] , sqluser=*string , sqlpass=*string , outdb=*string , [dbtable=*string]) : Registers a user by prompting credentials,assigns a unique m_id to the user and stores the credentials and m_id
                                                                                                                                                in the desired table. Default table name : credentials , default host : localhost
 
