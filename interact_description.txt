@@ -6,12 +6,12 @@ Interact is a module that contains all the necessities for a terminal-based prog
 
 Functions : 
 
-1.msg(m=*string) : Display a message to the user.
-2.error(m=*string) : Display an error message to the user.
-3.warn(m=*string) : Display a warning to the user.
-4.info(m=*string) : Display an info box to the user.
-5.tip(m=*string) : Display a tip to the user.
-6.star(m=*string) : Display a starred message to the user.
+1.msg(m=*string , [f=0],[e='']) : Display a message to the user. f=1 - Flush=True , e='.' - No newline , end line with '.'
+2.star(m=*string , [f=0],[e='']) : Display a starred message to the user. f=1 - Flush=True , e='.' - No newline , end line with '.'
+3.error(m=*string) : Display an error message to the user.
+4.warn(m=*string) : Display a warning to the user.
+5.info(m=*string) : Display an info box to the user.
+6.tip(m=*string) : Display a tip to the user.
 7.box(m=*string) : Display a boxed message to the user.
 
 Best part about sql connectivity using this module, you don't need to import any sql module. It is auto-connected.
