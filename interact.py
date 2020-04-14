@@ -9,7 +9,12 @@ import random
 def error(m='An error occured.'):
     if m.strip() == "":
         m=' '*7
-    li = m.split("\n")
+    if isinstance(m,string):
+        li = m.split("\n")
+    elif isinstance(m,list):
+        li = m
+    else:
+        li = str(m)
     maximum = 0
     for l in li:
         if len(l) < 9:
@@ -26,7 +31,12 @@ def error(m='An error occured.'):
         
 
 def warn(m=' '*9):
-    li = m.split("\n")
+    if isinstance(m,string):
+        li = m.split("\n")
+    elif isinstance(m,list):
+        li = m
+    else:
+        li = str(m)
     maximum = 0
     for l in li:
         if len(l) < 11:
@@ -43,7 +53,12 @@ def warn(m=' '*9):
         
 
 def info(m=' '*6):
-    li = m.split("\n")
+    if isinstance(m,string):
+        li = m.split("\n")
+    elif isinstance(m,list):
+        li = m
+    else:
+        li = str(m)
     maximum = 0
     for l in li:
         if len(l) < 8:
@@ -60,7 +75,12 @@ def info(m=' '*6):
         
 
 def tip(m=' '*5):
-    li = m.split("\n")
+    if isinstance(m,string):
+        li = m.split("\n")
+    elif isinstance(m,list):
+        li = m
+    else:
+        li = str(m)
     maximum = 0
     for l in li:
         if len(l) < 7:
@@ -178,7 +198,12 @@ def menu(title=" ",items=[],reuse=0):
 
 
 def box(m=" "):
-    li = m.split("\n")
+    if isinstance(m,string):
+        li = m.split("\n")
+    elif isinstance(m,list):
+        li = m
+    else:
+        li = str(m)
     maximum = 0
     for l in li:
         part = len(l)
