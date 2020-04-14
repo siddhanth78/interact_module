@@ -49,4 +49,4 @@ Best part about sql connectivity using this module, you don't need to import any
 
 17.exit_yesno() : Asks the user for a yes/no confirmation when he/she wants to exit. Returns an integer ('y' - 1 , 'n' - 0 , default-2).
 
-18.custom_yesno() : Asks the user for a yes/no confirmation with a custom prompt. Returns an integer ('y' - 1 , 'n' - 0 , default - 2).
+18.custom_yesno(m=*string) : Asks the user for a yes/no confirmation with a custom prompt. Returns an integer ('y'-1 ,'n'-0, default-2).
