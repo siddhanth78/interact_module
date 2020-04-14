@@ -22,19 +22,16 @@ Best part about sql connectivity using this module, you don't need to import any
 9.login([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , [dbtable=*string]) : Helps a user to login by prompting credentials and validates them by checking in the desired table.
                                                                                                                                            Default table name : credentials , default host : localhost
 
-10.get_items([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , dbtable=*string, [reqcol=*string]  , [wherecol=*string], [pattern=*string]) : Selects and returns items from desired column of desired
-                                                                                                                                                                                                                                    table using desired conditions. Default reqcol = *
-
-11.update([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , dbtable=*string ,reqcol=*string, newdata=*anydatatype [wherecol=*string] , [pattern=*string]) : Updates item of desired column from
-         																                     desired table using desired conditions.
-
+10.get_items([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , dbtable=*string, [reqcol=*string]  , [wherecol=*string], [pattern=*string]) : Selects and returns items from desired column of desired table using desired conditions. Default reqcol = *
+                                                                                                                                                                                                                              
+11.update([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , dbtable=*string ,reqcol=*string, newdata=*anydatatype [wherecol=*string] , [pattern=*string]) : Updates item of desired column from desired table using desired conditions.
+         																                     
 12.multi_update([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , updates(*list)=[
                                                                                                                                                 (<table1>,<reqcol1>,<newdata1>,[<wherecol1>],[<pattern1>]),
                                                                                                                                                 (<table2>,<reqcol2>,<newdata2>,[<wherecol2>],[<pattern2>]), ...
                                                                                                                                                 ... (<table n>,<reqcol n>,<newdata n>,[<wherecol n>],[<pattern n>])
                                                                                                                                               ])
-                                                                                                                                                                                                                                                           :   Updates all items of desired column 
-                                                                                                                                                                                                                                                               from desired table using desired                                                                                                                                                                                                                                                                conditions.
+                                                                                                                                        :   Updates all items of desired column from desired table using desired conditions.                                                                                                                                    
 13.clr() : Clear terminal.
 
 14.menu(title=*string , items(*list)=[
@@ -42,3 +39,10 @@ Best part about sql connectivity using this module, you don't need to import any
                                                      <item2> ...
                                                      ... <item n>
                                                   ], [reuse=0])                        : Creates a menu with the desired title and items. Default reuse : 0. If reuse=1, menu function will return a string. It can be stored in a variable.                                                                                                                                                                                          
+15.prompt_(m=*string) : Prompts the user. Returns a string.
+
+16.yesno() : Asks the user for a yes/no confirmation. Returns an integer ('y' - 1 , 'n' - 0 , default - 2).
+
+17.exit_yesno() : Asks the user for a yes/no confirmation when he/she wants to exit. Returns an integer ('y' - 1 , 'n' - 0 , default-2).
+
+18.custom_yesno() : Asks the user for a yes/no confirmation with a custom prompt. Returns an integer ('y' - 1 , 'n' - 0 , default - 2).
