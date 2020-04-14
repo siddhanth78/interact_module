@@ -556,6 +556,14 @@ def writefile(filepath="",newdata="",mode="append"):
             file.close()
 
 
+def createfile(filepath=""):
+    if os.path.exists(filepath)==True:
+        print("\nFile already exists.\n")
+    elif os.path.exists(filepath)==False:
+        file = open(filepath,'x')
+        file.close()
+
+
 
 def deletefile(filepath=""):
     try:
@@ -571,7 +579,7 @@ def deletefile(filepath=""):
         
 def greet():
     os.system('cls')
-    print("INTERACT 1.2.4. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
+    print("INTERACT 1.2.5. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
 
 
 greet()
