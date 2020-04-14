@@ -23,7 +23,7 @@ Best part about sql connectivity using this module, you don't need to import any
                                                                                                        Default table name : credentials , default host : localhost
 
 10.get_items([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , dbtable=*string, [reqcol=*string]  , [wherecol=*string], [pattern=*string]) : Selects and returns items from desired column of desired table using desired conditions. 
-                                         Default reqcol = * , default host : localhost
+                                                                                                                                                                                  Default reqcol = * , default host : localhost
                                          
 11.update([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , dbtable=*string ,reqcol=*string, newdata=*anydatatype [wherecol=*string] , [pattern=*string]) : Updates item of desired column from desired table using desired 
          																                       conditions. Default host : localhost
