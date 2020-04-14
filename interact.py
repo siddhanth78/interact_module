@@ -9,7 +9,7 @@ import random
 def error(m='An error occured.'):
     if m.strip() == "":
         m=' '*7
-    if isinstance(m,string):
+    if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
         li = m
@@ -31,7 +31,7 @@ def error(m='An error occured.'):
         
 
 def warn(m=' '*9):
-    if isinstance(m,string):
+    if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
         li = m
@@ -53,7 +53,7 @@ def warn(m=' '*9):
         
 
 def info(m=' '*6):
-    if isinstance(m,string):
+    if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
         li = m
@@ -75,7 +75,7 @@ def info(m=' '*6):
         
 
 def tip(m=' '*5):
-    if isinstance(m,string):
+    if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
         li = m
@@ -198,7 +198,7 @@ def menu(title=" ",items=[],reuse=0):
 
 
 def box(m=" "):
-    if isinstance(m,string):
+    if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
         li = m
