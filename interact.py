@@ -585,12 +585,17 @@ def runfile(filepath=""):
         return
     else:
         os.system(filepath)
+
+
+
+def pause(min_=0,sec=0,msec=0):
+    time.sleep((min_*60)+(sec*1)+(msec*0.001))
             
             
         
 def greet():
     os.system('cls')
-    print("INTERACT 1.3.1. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
+    print("INTERACT 1.2.5. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
 
 
 greet()
