@@ -6,7 +6,6 @@ import mysql.connector
 import random
 
 
-
 syner = ("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
          "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
          "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
@@ -574,12 +573,24 @@ def deletefile(filepath=""):
         return
     else:
         os.remove(filepath)
+
+
+
+def runfile(filepath=""):
+    try:
+        file = open(filepath,'r')
+        file.close()
+    except:
+        print("\nError. Either file doesn't exist or an error occured.\n")
+        return
+    else:
+        os.system(filepath)
             
             
         
 def greet():
     os.system('cls')
-    print("INTERACT 1.2.5. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
+    print("INTERACT 1.3.1. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
 
 
 greet()
