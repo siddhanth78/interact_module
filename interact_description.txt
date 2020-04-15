@@ -61,3 +61,5 @@ Even file maipulation is automated. No need to import any os module.
 20.deletefile(filepath=*string) : Deletes the file.
 
 21.createfile(filepath=*string) : Creates the file.
+
+22.runfile(filepath=*string) : Runs the file.
