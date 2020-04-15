@@ -595,7 +595,7 @@ def pause(min_=0,sec=0,msec=0):
         
 def greet():
     os.system('cls')
-    print("INTERACT 1.2.5. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
+    print("INTERACT 1.3.2. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
 
 
 greet()
