@@ -63,3 +63,5 @@ Even file maipulation is automated. No need to import any os module.
 21.createfile(filepath=*string) : Creates the file.
 
 22.runfile(filepath=*string) : Runs the file.
+
+23.pause([min_=*int] , [sec=*int] , [msec=*int]) : Pauses the program for specified time.
