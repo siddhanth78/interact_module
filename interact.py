@@ -511,7 +511,7 @@ def clr():
 
 
 
-def readfile(filepath="",return_="whole"):
+def readfile(filepath="",return_="whole",amt=0):
     try:
         file = open(filepath,'r')
         file.close()
@@ -521,13 +521,25 @@ def readfile(filepath="",return_="whole"):
     else:
         file = open(filepath,'r')
         if return_ == "whole":
-            data=file.read()
-            file.close()
-            return data
+            if amt==0:
+                data=file.read()
+                file.close()
+                return data
+            else:
+                data=file.read(amt)
+                file.close()
+                return data
         elif return_ == "lines":
-            data=file.readlines()
-            file.close()
-            return data
+            if amt==0:
+                data=file.readlines()
+                file.close()
+                return data
+            else:
+                data=[]
+                for x in range(amt):
+                    data.append(file.readline())
+                file.close()
+                return data
         else:
             data=file.read()
             file.close()
