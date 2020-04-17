@@ -65,3 +65,7 @@ Even file maipulation is automated. No need to import any os module.
 22.runfile(filepath=*string) : Runs the file.
 
 23.pause([min_=*int] , [sec=*int] , [msec=*int]) : Pauses the program for specified time.
+
+21.copyfile(filepath=*string,copypath=*string) : Copies the file to the copypath path.
+
+21.movefile(filepath=*string,newpath=*string) : Moves the file to the newpath path.
