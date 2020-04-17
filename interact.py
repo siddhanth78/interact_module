@@ -24,7 +24,7 @@ def error(m='An error occured.'):
         for it in m:
             li.append(it.strip("\n"))
     else:
-        li = str(m)
+        li = [str(m)]
     maximum = 0
     for l in li:
         if len(l) < 9:
@@ -48,7 +48,7 @@ def warn(m=' '*9):
         for it in m:
             li.append(it.strip("\n"))
     else:
-        li = str(m)
+        li = [str(m)]
     maximum = 0
     for l in li:
         if len(l) < 11:
@@ -72,7 +72,7 @@ def info(m=' '*6):
         for it in m:
             li.append(it.strip("\n"))
     else:
-        li = str(m)
+        li = [str(m)]
     maximum = 0
     for l in li:
         if len(l) < 8:
@@ -96,7 +96,7 @@ def tip(m=' '*5):
         for it in m:
             li.append(it.strip("\n"))
     else:
-        li = str(m)
+        li = [str(m)]
     maximum = 0
     for l in li:
         if len(l) < 7:
@@ -221,7 +221,7 @@ def box(title='-',m=' '):
         for it in m:
             li.append(it.strip("\n"))
     else:
-        li = str(m)
+        li = [str(m)]
     maximum = 0
     for l in li:
         if len(l) < len(title)+2:
