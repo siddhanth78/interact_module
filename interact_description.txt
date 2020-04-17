@@ -12,7 +12,7 @@ Functions :
 4.warn(m=*string) : Display a warning to the user.
 5.info(m=*string) : Display an info box to the user.
 6.tip(m=*string) : Display a tip to the user.
-7.box(m=*string) : Display a boxed message to the user.
+7.box([title=*string],m=*string) : Display a boxed message to the user. title : Displays title of the box.
 
 Best part about sql connectivity using this module, you don't need to import any sql module. It is auto-connected.
 
