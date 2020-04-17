@@ -213,7 +213,7 @@ def menu(title=" ",items=[],reuse=0):
 
 
 
-def box(m=" "):
+def box(title='-',m=' '):
     if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
@@ -224,10 +224,13 @@ def box(m=" "):
         li = str(m)
     maximum = 0
     for l in li:
+        if len(l) < len(title)+2:
+            l = l+" "*((len(title)+2)-len(l))
         part = len(l)
         if part > maximum:
             maximum = part
-    print("+-"+"-"*maximum+"-+")
+    print("+-"+title+"-"*(maximum-len(title))+"-+")
+    print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
     print("+-"+"-"*maximum+"-+\n")
