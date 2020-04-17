@@ -4,6 +4,7 @@ import time
 import getpass
 import mysql.connector
 import random
+import shutil
 
 
 syner = ("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
@@ -588,14 +589,50 @@ def runfile(filepath=""):
 
 
 
+def rename(filepath="",newpath=""):
+    try:
+        file = open(filepath,'r')
+        file.close()
+    except:
+        print("\nError. Either file doesn't exist or an error occured.\n")
+        return
+    else:
+        os.rename(filepath,newpath)
+
+
+
+def movefile(filepath="",newpath=""):
+    try:
+        file = open(filepath,'r')
+        file.close()
+    except:
+        print("\nError. Either file doesn't exist or an error occured.\n")
+        return
+    else:
+        os.replace(filepath,newpath)
+
+
+
+def copyfile(filepath="",copypath=""):
+    try:
+        file = open(filepath,'r')
+        file.close()
+    except:
+        print("\nError. Either file doesn't exist or an error occured.\n")
+        return
+    else:
+        shutil.copyfile(filepath,copypath)
+
+
+
 def pause(min_=0,sec=0,msec=0):
     time.sleep((min_*60)+(sec*1)+(msec*0.001))
-            
-            
+
+
         
 def greet():
     os.system('cls')
-    print("INTERACT 1.3.2. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
+    print("INTERACT 1.3.3. Visit https://github.com/siddhanth78/interact_module for more info.\n\n",flush=True)
 
 
 greet()
