@@ -214,6 +214,7 @@ def menu(title=" ",items=[],reuse=0):
 
 
 def box(title='-',m=' '):
+    title=str(title)
     if isinstance(m,str):
         li = m.split("\n")
     elif isinstance(m,list):
