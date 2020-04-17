@@ -53,7 +53,7 @@ Best part about sql connectivity using this module, you don't need to import any
 
 Even file maipulation is automated. No need to import any os module.
 
-19.readfile(filepath=*string , [return_="whole"]) : Returns file contents. return_="lines" - Returns a list of lines in the file.
+19.readfile(filepath=*string , [return_="whole"],[amt=*int]) : Returns file contents. return_="lines" - Returns a list of lines in the file. amt - ("whole" : gives first *amt characters of the file. "lines" : gives first *amt lines of the file in a list.)
 
 19.writefile(filepath=*string, newdata=*anydatatype , [mode="append"]) : Writes data into a file. mode="overwrite" : Overwrites file
                                                                                                                      contents.
