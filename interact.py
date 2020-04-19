@@ -1,10 +1,45 @@
-import os
-import os.path
 import time
-import getpass
-import mysql.connector
 import random
-import shutil
+
+try:
+    import os
+except:
+    print("os (installation reqd. - yes)")
+    time.sleep(3)
+    quit()
+else:
+    print("os (installation reqd. - no)")
+    import os.path
+
+try:
+    import getpass
+except:
+    print("getpass (installation reqd. - yes)")
+    time.sleep(3)
+    quit()
+else:
+    print("getpass (installation reqd. - no)")
+
+try:
+    import mysql.connector
+except:
+    print("mysql-connector-python (installation reqd. - yes)")
+    time.sleep(3)
+    quit()
+else:
+    print("mysql-connector-python (installation reqd. - no)")
+
+try:
+    import shutil
+except:
+    print("shutil (installation reqd. - yes)")
+    time.sleep(3)
+    quit()
+else:
+    print("shutil (installation reqd. - no)")
+
+time.sleep(0.5)
+    
 
 
 syner = ("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
@@ -648,10 +683,6 @@ def pause(min_=0,sec=0,msec=0):
         
 def greet():
     os.system('cls')
-    print("INTERACT 1.3.4. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
+    print("INTERACT 1.3.5. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
 
-
-greet()
-
-
-    
+greet()   
