@@ -1,47 +1,67 @@
 import time
 import random
+import sys
+
+aa=0
+bb=0
+cc=0
+dd=0
+cout=0
 
 try:
     import os
 except:
-    print("os (installation reqd. - yes)")
-    time.sleep(3)
-    quit()
+    aa=1
 else:
-    print("os (installation reqd. - no)")
+    time.sleep(0.5)
+    sys.stdout.write("\rChecking...|")
     import os.path
 
 try:
     import getpass
 except:
-    print("getpass (installation reqd. - yes)")
-    time.sleep(3)
-    quit()
+    bb=1
 else:
-    print("getpass (installation reqd. - no)")
+    time.sleep(0.5)
+    sys.stdout.write("\rChecking.../")
 
 try:
     import mysql.connector
 except:
-    print("mysql-connector-python (installation reqd. - yes)")
-    time.sleep(3)
-    quit()
+    cc=1
 else:
-    print("mysql-connector-python (installation reqd. - no)")
+    time.sleep(0.5)
+    sys.stdout.write("\rChecking...-")
 
 try:
     import shutil
 except:
-    print("shutil (installation reqd. - yes)")
+    dd=1
+else:
+    time.sleep(0.5)
+    sys.stdout.write("\rChecking...\\")
+
+sys.stdout.write("\n")
+
+if aa==1:
+    sys.stdout.write("os (installation reqd. - yes)")
+    cout+=1
+if bb==1:
+    sys.stdout.write("getpass (installation reqd. - yes)")
+    cout+=1
+if cc==1:
+    sys.stdout.write("mysql-connector-python (installation reqd. - yes)")
+    cout+=1
+if dd==1:
+    sys.stdout.write("shutil (installation reqd. - yes)")
+    cout+=1
+
+if cout>0:
     time.sleep(3)
     quit()
 else:
-    print("shutil (installation reqd. - no)")
-
-time.sleep(0.5)
+    time.sleep(0.5)
     
-
-
 syner = ("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
          "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
          "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
