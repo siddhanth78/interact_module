@@ -1,6 +1,14 @@
 import time
 import random
-import sys
+
+try:
+    import sys
+except:
+    print("os-sys (installation reqd. - yes")
+    time.sleep(3)
+    quit()
+else:
+    pass
 
 aa=0
 bb=0
