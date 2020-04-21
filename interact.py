@@ -575,6 +575,7 @@ def sign_up(sqlhost="localhost",sqluser="",sqlpass="",outdb="",dbtable="credenti
 
 def clr():
     os.system('cls')
+    print("INTERACT 1.3.5. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
 
 
 
