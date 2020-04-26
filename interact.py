@@ -301,7 +301,7 @@ def box(title='-',m=' '):
 
 
 
-def login(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="credentials"):
+def login(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credentials"):
     usern = ""
     passw = ""
     valid = 0
@@ -319,7 +319,7 @@ def login(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="credenti
             continue
         break
 
-    if checkdb.strip()=="":
+    if sql_db.strip()=="":
         pass
     else:
         try:
@@ -327,7 +327,7 @@ def login(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="credenti
                 host = sqlhost.strip(),
                 user = sqluser.strip(),
                 passwd = sqlpass,
-                database = checkdb.strip()
+                database = sql_db.strip()
                 )
 
             cursor = mydb.cursor()
@@ -351,14 +351,14 @@ def login(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="credenti
 
 
 
-def get_items(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="*",wherecol="",pattern=""):
+def get_items(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="",reqcol="*",wherecol="",pattern=""):
     itemlist = []
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
             user = sqluser.strip(),
             passwd = sqlpass,
-            database = checkdb.strip()
+            database = sql_db.strip()
             )
 
         cursor = mydb.cursor()
@@ -393,13 +393,13 @@ def get_items(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="",re
 
 
 
-def update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="",reqcol="",newdata="",wherecol="",pattern=""):
+def update(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="",reqcol="",newdata="",wherecol="",pattern=""):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
             user = sqluser.strip(),
             passwd = sqlpass,
-            database = checkdb.strip()
+            database = sql_db.strip()
             )
 
         cursor = mydb.cursor()
@@ -435,7 +435,7 @@ def update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",dbtable="",reqco
                     return
 
 
-def multi_update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",updates=[]):
+def multi_update(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",updates=[]):
     global syner
     if isinstance(updates , list) == False:
         print("ArgTypeError : multi_update(<string> , <string> , <string> , <list>)")
@@ -445,7 +445,7 @@ def multi_update(sqlhost="localhost",sqluser="",sqlpass="",checkdb="",updates=[]
             host = sqlhost.strip(),
             user = sqluser.strip(),
             passwd = sqlpass,
-            database = checkdb.strip()
+            database = sql_db.strip()
             )
 
         cursor = mydb.cursor()
@@ -575,7 +575,7 @@ def sign_up(sqlhost="localhost",sqluser="",sqlpass="",outdb="",dbtable="credenti
 
 def clr():
     os.system('cls')
-    print("INTERACT 1.3.5. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
+    print("INTERACT 1.4.0. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
 
 
 
