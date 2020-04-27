@@ -467,6 +467,7 @@ def multi_update(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",updates=[])
                 continue
             else:
                 pass
+            
             if str(newdata).strip() == "":
                 print(f"\nError in query {number}. New data can't be blank.\n")
                 print(syner)
@@ -506,7 +507,7 @@ def multi_update(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",updates=[])
                 
 
 
-def sign_up(sqlhost="localhost",sqluser="",sqlpass="",outdb="",dbtable="credentials"):
+def sign_up(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credentials"):
     usern = ""
     passw = ""
     valid = 0
