@@ -214,7 +214,7 @@ def exit_yesno():
 
 
 
-def prompt_(m=" "):
+def prompt(m=" "):
     ans = input(f"{m} : ")
     print()
     return ans
