@@ -575,7 +575,7 @@ def sign_up(sqlhost="localhost",sqluser="",sqlpass="",outdb="",dbtable="credenti
 
 def clr():
     os.system('cls')
-    print("INTERACT 1.4.0. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
+    print("INTERACT. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
 
 
 
@@ -712,6 +712,6 @@ def pause(min_=0,sec=0,msec=0):
         
 def greet():
     os.system('cls')
-    print("INTERACT 1.4.0. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
+    print("INTERACT. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
 
 greet()   
