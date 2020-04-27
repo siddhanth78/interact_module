@@ -536,7 +536,7 @@ def sign_up(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credent
         elif repassw == passw:
             break
 
-    if outdb.strip()=="":
+    if sql_db.strip()=="":
         pass
     else:
         try:
@@ -544,7 +544,7 @@ def sign_up(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credent
                 host = sqlhost.strip(),
                 user = sqluser.strip(),
                 passwd = sqlpass,
-                database = outdb.strip()
+                database = sql_db.strip()
                 )
 
             cursor = mydb.cursor()
