@@ -705,6 +705,10 @@ def copyfile(filepath="",copypath=""):
         shutil.copyfile(filepath,copypath)
 
 
+def help():
+    print("\nLink : https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt\n")
+
+
 
 def pause(min_=0,sec=0,msec=0):
     time.sleep((min_*60)+(sec*1)+(msec*0.001))
