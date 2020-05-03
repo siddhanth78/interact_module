@@ -237,11 +237,10 @@ def box(title='-',m=' '):
 
 def clr():
     os.system('cls')
-    print("INTERACT. Visit https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt for more info.\n\n",flush=True)
 
 
 def help():
-    print("\nLink : https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt\n")
+    print("\nLink : https://github.com/siddhanth78/interact_module/blob/master/display.txt\n")
 
 
 
