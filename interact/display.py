@@ -1,6 +1,14 @@
 import time
 import random
 
+try:
+    import os
+except:
+    print("os (installation reqd. - yes")
+    time.sleep(3)
+    quit()
+else:
+    pass
 
 try:
     import getpass
@@ -238,11 +246,8 @@ def box(title='-',m=' '):
 def clr():
     os.system('cls')
 
-
 def help():
     print("\nLink : https://github.com/siddhanth78/interact_module/blob/master/display.txt\n")
-
-
 
 def pause(min_=0,sec=0,msec=0):
     time.sleep((min_*60)+(sec*1)+(msec*0.001))
