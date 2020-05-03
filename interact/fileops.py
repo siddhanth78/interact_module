@@ -25,6 +25,8 @@ except:
 else:
     pass
 
+def help():
+    print("\nLink : https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt\n")
 
 
 def readfile(filepath="",return_="whole",amt=0):
