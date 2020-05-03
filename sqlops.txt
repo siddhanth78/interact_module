@@ -1,1 +1,20 @@
+sqlops :
 
+1.sign_up([sqlhost=*string] , sqluser=*string , sqlpass=*string , outdb=*string , [dbtable=*string]) : Registers a user by prompting credentials,assigns a unique m_id to the user and stores the credentials and m_id
+                                                                                                       in the desired table. Default table name : credentials , default host : localhost
+
+2.login([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , [dbtable=*string]) : Helps a user to login by prompting credentials and validates them by checking in the desired table.
+                                                                                                       Default table name : credentials , default host : localhost
+
+3.get_items([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , dbtable=*string, [reqcol=*string]  , [wherecol=*string], [pattern=*string]) : Selects and returns items from desired column of desired table using desired conditions. 
+                                                                                                                                                                                  Default reqcol = * , default host : localhost
+                                         
+4.update([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , updates(*list)=[
+                                                                        (<table1>,<reqcol1>,<newdata1>,[<wherecol1>],[<pattern1>]),
+                                                                        (<table2>,<reqcol2>,<newdata2>,[<wherecol2>],[<pattern2>]), ...
+                                                               ... (<table n>,<reqcol n>,<newdata n>,[<wherecol n>],[<pattern n>])
+                                            ])  :   Updates all items of desired column from desired table using desired conditions.
+                                                    Default host : localhost
+                                                    
+                                                    
+                                                    
