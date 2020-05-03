@@ -14,6 +14,8 @@ syner = ("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int
          "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
          "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
 
+def help():
+    print("\nLink : https://github.com/siddhanth78/interact_module/blob/master/interact_description.txt\n")
 
 def login(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credentials"):
     usern = ""
