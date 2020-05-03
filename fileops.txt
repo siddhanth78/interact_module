@@ -14,3 +14,5 @@ fileops :
 6.copyfile(filepath=*string,copypath=*string) : Copies the file to the copypath path.
 
 7.movefile(filepath=*string,newpath=*string) : Moves the file to the newpath path.
+
+
