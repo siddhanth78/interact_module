@@ -143,7 +143,6 @@ def insert(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",new
                         ndat=ndat+f"'{str(ne)}'"
                     else:
                         ndat=ndat+","+f"'{str(ne)}'"
-                print(ndat)
                 try:
                     cursor.execute(f"insert into {dbtable.strip()} values ({ndat.strip()})")
                     mydb.commit()
