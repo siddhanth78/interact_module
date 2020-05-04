@@ -17,4 +17,9 @@ sqlops :
                                                     Default host : localhost
                                                     
                                                     
-                                                    
+5.insert([sqlhost=*string] , sqluser=*string , sqlpass=*string , checkdb=*string , updates(*list)=[
+                                                                        (<table1>,<reqcol1>,<newdata1>,[<wherecol1>],[<pattern1>]),
+                                                                        (<table2>,<reqcol2>,<newdata2>,[<wherecol2>],[<pattern2>]), ...
+                                                               ... (<table n>,<reqcol n>,<newdata n>,[<wherecol n>],[<pattern n>])
+                                            ])  :   Inserts all items into desired table.
+                                                    Default host : localhost                                                    
