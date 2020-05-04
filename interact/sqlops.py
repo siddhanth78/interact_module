@@ -14,10 +14,12 @@ syner = ("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int
          "                          ...(<table'n'>,<targetcolumn'n'>,<newdata'n' (int or string)>,"
          "<conditioncolumn'n' (can be blank by entering '')>,<pattern'n'> (can be blank by entering ''))]")
 
+
 def help():
     print("\nLink : https://github.com/siddhanth78/interact_module/blob/master/sqlops.txt\n")
 
-def login(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credentials"):
+
+def login(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="credentials"):
     usern = ""
     passw = ""
     valid = 0
@@ -35,7 +37,7 @@ def login(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credentia
             continue
         break
 
-    if sql_db.strip()=="":
+    if sqldb.strip()=="":
         pass
     else:
         try:
@@ -43,7 +45,7 @@ def login(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credentia
                 host = sqlhost.strip(),
                 user = sqluser.strip(),
                 passwd = sqlpass,
-                database = sql_db.strip()
+                database = sqldb.strip()
                 )
 
             cursor = mydb.cursor()
@@ -67,14 +69,14 @@ def login(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credentia
 
 
 
-def get_items(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="",reqcol="*",wherecol="",pattern=""):
+def get_items(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",reqcol="*",wherecol="",pattern=""):
     itemlist = []
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
             user = sqluser.strip(),
             passwd = sqlpass,
-            database = sql_db.strip()
+            database = sqldb.strip()
             )
 
         cursor = mydb.cursor()
@@ -109,17 +111,62 @@ def get_items(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="",req
 
 
 
-def update(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",updates=[]):
+def insert(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",newdata=[]):
     global syner
-    if isinstance(updates , list) == False:
-        print("ArgTypeError : multi_update(<string> , <string> , <string> , <list>)")
+    if isinstance(newdata , list) == False:
+        print("ArgTypeError : newdata(<list>)")
         return
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
             user = sqluser.strip(),
             passwd = sqlpass,
-            database = sql_db.strip()
+            database = sqldb.strip()
+            )
+
+        cursor = mydb.cursor()
+    except:
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        return
+    else:
+        number = 1
+        for new in newdata:
+            if str(new).strip() == "":
+                print(f"\nError in query {number}. New data can't be blank.\n")
+                number+=1
+                continue
+        
+            else:
+                ndat = ""
+                for ne in new:
+                    if ndat=="":
+                        ndat=ndat+f"'{str(ne)}'"
+                    else:
+                        ndat=ndat+","+f"'{str(ne)}'"
+                print(ndat)
+                try:
+                    cursor.execute(f"insert into {dbtable.strip()} values ({ndat.strip()})")
+                    mydb.commit()
+                except:
+                    print(f"\nError in query {number}. Check your arguments again.\n")
+                    number+=1
+                    continue
+                else:
+                    number+=1
+                    continue
+
+
+def update(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",updates=[]):
+    global syner
+    if isinstance(updates , list) == False:
+        print("ArgTypeError : updates(<list>)")
+        return
+    try:
+        mydb = mysql.connector.connect(
+            host = sqlhost.strip(),
+            user = sqluser.strip(),
+            passwd = sqlpass,
+            database = sqldb.strip()
             )
 
         cursor = mydb.cursor()
@@ -142,7 +189,7 @@ def update(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",updates=[]):
             else:
                 pass
             
-            if str(newdata).strip() == "":
+            if str(updates).strip() == "":
                 print(f"\nError in query {number}. New data can't be blank.\n")
                 print(syner)
                 number+=1
@@ -181,7 +228,7 @@ def update(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",updates=[]):
                 
 
 
-def sign_up(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credentials"):
+def sign_up(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="credentials"):
     usern = ""
     passw = ""
     valid = 0
@@ -210,7 +257,7 @@ def sign_up(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credent
         elif repassw == passw:
             break
 
-    if sql_db.strip()=="":
+    if sqldb.strip()=="":
         pass
     else:
         try:
@@ -218,7 +265,7 @@ def sign_up(sqlhost="localhost",sqluser="",sqlpass="",sql_db="",dbtable="credent
                 host = sqlhost.strip(),
                 user = sqluser.strip(),
                 passwd = sqlpass,
-                database = sql_db.strip()
+                database = sqldb.strip()
                 )
 
             cursor = mydb.cursor()
