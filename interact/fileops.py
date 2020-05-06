@@ -65,7 +65,7 @@ def readfile(filepath="",return_="whole",amt=0):
             return data
 
 
-def bin_readfile(filepath="",return_="whole",amt=0,dec="utf-8"):
+def bin_readfile(filepath="",return_="whole",amt=0,dec=""):
     try:
         file = open(filepath,'rb')
         file.close()
@@ -78,12 +78,14 @@ def bin_readfile(filepath="",return_="whole",amt=0,dec="utf-8"):
             if amt==0:
                 data=file.read()
                 file.close()
-                data = data.decode(dec)
+                if dec!="":
+                    data = data.decode(dec)
                 return data
             else:
                 data=file.read(amt)
                 file.close()
-                data = data.decode(dec)
+                if dec!="":
+                    data = data.decode(dec)
                 return data
         elif return_ == "lines":
             if amt==0:
@@ -91,7 +93,8 @@ def bin_readfile(filepath="",return_="whole",amt=0,dec="utf-8"):
                 datas = file.readlines()
                 for x in datas:
                     dat = x
-                    dat = dat.decode(dec)
+                    if dec!="":
+                        data = data.decode(dec)
                     data.append(dat)
                 file.close()
                 return data
@@ -99,14 +102,16 @@ def bin_readfile(filepath="",return_="whole",amt=0,dec="utf-8"):
                 data=[]
                 for x in range(amt):
                     dat = file.readline()
-                    dat = dat.decode(dec)
+                    if dec!="":
+                        data = data.decode(dec)
                     data.append(dat)
                 file.close()
                 return data
         else:
             data=file.read()
             file.close()
-            data = data.decode(dec)
+            if dec!="":
+                data = data.decode(dec)
             return data
 
 
