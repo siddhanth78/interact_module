@@ -25,6 +25,7 @@ except:
 else:
     pass
 
+
 def help():
     print("\nLink : https://github.com/siddhanth78/interact_module/blob/master/fileops.txt\n")
 
@@ -64,6 +65,42 @@ def readfile(filepath="",return_="whole",amt=0):
             return data
 
 
+def bin_readfile(filepath="",return_="whole",amt=0):
+    try:
+        file = open(filepath,'r')
+        file.close()
+    except:
+        print("\nError. Either file doesn't exist or an error occured.\n")
+        return
+    else:
+        file = open(filepath,'rb')
+        if return_ == "whole":
+            if amt==0:
+                data=file.read()
+                file.close()
+                return data
+            else:
+                data=file.read(amt)
+                file.close()
+                return data
+        elif return_ == "lines":
+            if amt==0:
+                data=file.readlines()
+                file.close()
+                return data
+            else:
+                data=[]
+                for x in range(amt):
+                    data.append(file.readline())
+                file.close()
+                return data
+        else:
+            data=file.read()
+            file.close()
+            return data
+
+
+
 def writefile(filepath="",newdata="",mode="append"):
     try:
         file = open(filepath,'r')
@@ -84,6 +121,30 @@ def writefile(filepath="",newdata="",mode="append"):
             file = open(filepath,'a')
             file.write(newdata)
             file.close()
+
+
+
+def bin_writefile(filepath="",newdata="",mode="append"):
+    try:
+        file = open(filepath,'r')
+        file.close()
+    except:
+        print("\nError. Either file doesn't exist or an error occured.\n")
+        return
+    else:
+        if mode == "append":
+            file = open(filepath,'ab')
+            file.write(newdata)
+            file.close()
+        elif mode == "overwrite":
+            file = open(filepath,'wb')
+            file.write(newdata)
+            file.close()
+        else:
+            file = open(filepath,'ab')
+            file.write(newdata)
+            file.close()
+
 
 
 def createfile(filepath=""):
