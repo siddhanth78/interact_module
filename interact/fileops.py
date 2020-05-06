@@ -65,9 +65,9 @@ def readfile(filepath="",return_="whole",amt=0):
             return data
 
 
-def bin_readfile(filepath="",return_="whole",amt=0):
+def bin_readfile(filepath="",return_="whole",amt=0,dec="utf-8"):
     try:
-        file = open(filepath,'r')
+        file = open(filepath,'rb')
         file.close()
     except:
         print("\nError. Either file doesn't exist or an error occured.\n")
@@ -78,25 +78,35 @@ def bin_readfile(filepath="",return_="whole",amt=0):
             if amt==0:
                 data=file.read()
                 file.close()
+                data = data.decode(dec)
                 return data
             else:
                 data=file.read(amt)
                 file.close()
+                data = data.decode(dec)
                 return data
         elif return_ == "lines":
             if amt==0:
-                data=file.readlines()
+                data=[]
+                datas = file.readlines()
+                for x in datas:
+                    dat = x
+                    dat = dat.decode(dec)
+                    data.append(dat)
                 file.close()
                 return data
             else:
                 data=[]
                 for x in range(amt):
-                    data.append(file.readline())
+                    dat = file.readline()
+                    dat = dat.decode(dec)
+                    data.append(dat)
                 file.close()
                 return data
         else:
             data=file.read()
             file.close()
+            data = data.decode(dec)
             return data
 
 
@@ -124,7 +134,8 @@ def writefile(filepath="",newdata="",mode="append"):
 
 
 
-def bin_writefile(filepath="",newdata="",mode="append"):
+def bin_writefile(filepath="",newdata="",mode="append",enc="utf-8"):
+    newdata=bytearray(newdata,enc)
     try:
         file = open(filepath,'r')
         file.close()
