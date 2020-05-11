@@ -6,7 +6,7 @@ sqlops :
 2.login([sqlhost=*string] , sqluser=*string , sqlpass=*string , sqldb=*string , [dbtable=*string]) : Helps a user to login by prompting credentials and validates them by checking in the desired table.
                                                                                                        Default table name : credentials , default host : localhost
 
-3.get_items([sqlhost=*string] , sqluser=*string , sqlpass=*string , sqldb=*string , dbtable=*string, [reqcol=*string]  , [wherecol=*string], [pattern=*string]) : Selects and returns items from desired column of desired table using desired conditions. 
+3.select([sqlhost=*string] , sqluser=*string , sqlpass=*string , sqldb=*string , dbtable=*string, [reqcol=*string]  , [wherecol=*string], [pattern=*string]) : Selects and returns items from desired column of desired table using desired conditions. 
                                                                                                                                                                                   Default reqcol = * , default host : localhost
                                          
 4.update([sqlhost=*string] , sqluser=*string , sqlpass=*string , sqldb=*string , updates(*list)=[
