@@ -69,7 +69,7 @@ def login(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="creden
 
 
 
-def get_items(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",reqcol="*",wherecol="",pattern=""):
+def select(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",reqcol="*",wherecol="",pattern=""):
     itemlist = []
     try:
         mydb = mysql.connector.connect(
