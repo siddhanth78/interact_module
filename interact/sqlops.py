@@ -112,9 +112,9 @@ def select(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",req
 
 
 def insert(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",newdata=[]):
-    global syner
+    
     if isinstance(newdata , list) == False:
-        print("ArgTypeError : newdata(<list>)")
+        print("ArgTypeError : multi_update(<string> , <string> , <string> , <list>)")
         return
     try:
         mydb = mysql.connector.connect(
@@ -155,10 +155,29 @@ def insert(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",new
                     continue
 
 
+
+def exec(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",comm=""):
+    try:
+        mydb = mysql.connector.connect(
+            host = sqlhost.strip(),
+            user = sqluser.strip(),
+            passwd = sqlpass,
+            database = sqldb.strip()
+            )
+
+        cursor = mydb.cursor()
+    except:
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        return
+    else:
+        cursor.execute(comm)
+        
+
+
 def update(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",updates=[]):
     global syner
     if isinstance(updates , list) == False:
-        print("ArgTypeError : updates(<list>)")
+        print("ArgTypeError : multi_update(<string> , <string> , <string> , <list>)")
         return
     try:
         mydb = mysql.connector.connect(
