@@ -156,21 +156,28 @@ def insert(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",new
 
 
 
-def exec(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",comm=""):
+def exec(sqlhost="localhost",sqluser="root",sqlpass="",comm=[]):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
             user = sqluser.strip(),
             passwd = sqlpass,
-            database = sqldb.strip()
             )
 
         cursor = mydb.cursor()
     except:
-        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        print("\nError. Couldn't connect to server. Probably invalid credentials.\n")
         return
     else:
-        cursor.execute(comm)
+        no=1
+        for c in comm:
+            try:
+                cursor.execute(c)
+            except:
+                print(f"\nError in query {no}.\n")
+                no+=1
+            else:
+                no+=1
         
 
 
