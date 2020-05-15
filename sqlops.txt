@@ -25,4 +25,9 @@ sqlops :
                                                     Default host : localhost                                                    
 
 
-
+6.exec([sqlhost=*string] , sqluser=*string , sqlpass=*string , comm(*list)=[
+                                                                      <sql command 1>,
+                                                                      <sql command 2>,...
+                                                                      ...<sql command n>
+                                                                      ])
+                                                                           : Executes sql queries.
