@@ -132,10 +132,11 @@ def showalias(sqlpass="",sqluser="root",sqlhost="localhost"):
         return
     else:
         cursor.execute(f"select * from shortcutlog")
-        print("\nFormat -> Key : Data\n")
+        print("\nFormat -> Key : Data")
         print("\n---Alias list---\n")
         for x in cursor:
             print(x[0]+" : "+x[1])
+        print()
         return
 
     
