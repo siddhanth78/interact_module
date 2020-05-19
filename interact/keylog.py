@@ -28,7 +28,7 @@ def newkey(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
             cursor.execute(f"insert into shortcutlog values('{key}','{data}')")
             mydb.commit()
         except:
-            print("\nInvalid data.\n")
+            print("\nInvalid data. Probably because key\data already exists or invalid characters.\n")
             return
         else:
             return
