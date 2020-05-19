@@ -46,7 +46,7 @@ def getkey(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
             )
         cursor = mydb.cursor()
     except:
-        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist or invalid credentials.\n")
         return
     else:
         lik=[]
@@ -74,7 +74,7 @@ def deletekey(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
             )
         cursor = mydb.cursor()
     except:
-        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist or invalid credentials.\n")
         return
     else:
         lik=[]
@@ -101,7 +101,7 @@ def updatedata(sqlpass="",sqluser="root",sqlhost="localhost",key="",newdata=""):
             )
         cursor = mydb.cursor()
     except:
-        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist or invalid credentials.\n")
         return
     else:
         lik=[]
@@ -127,7 +127,7 @@ def updatekey(sqlpass="",sqluser="root",sqlhost="localhost",oldkey="",newkey="")
             )
         cursor = mydb.cursor()
     except:
-        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist or invalid credentials.\n")
         return
     else:
         lik=[]
@@ -154,7 +154,7 @@ def keylist(sqlpass="",sqluser="root",sqlhost="localhost"):
             )
         cursor = mydb.cursor()
     except:
-        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist or invalid credentials.\n")
         return
     else:
         cursor.execute(f"select * from shortcutlog")
