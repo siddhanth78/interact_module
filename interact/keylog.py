@@ -9,7 +9,7 @@ else:
 
 
 
-def newalias(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
+def newkey(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
@@ -35,7 +35,7 @@ def newalias(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
     
 
 
-def getalias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
+def getkey(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
     p=""
     try:
         mydb = mysql.connector.connect(
@@ -64,7 +64,7 @@ def getalias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
 
 
 
-def deletealias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
+def deletekey(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
@@ -91,7 +91,7 @@ def deletealias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
 
 
 
-def updatealias(sqlpass="",sqluser="root",sqlhost="localhost",key="",newdata=""):
+def updatedata(sqlpass="",sqluser="root",sqlhost="localhost",key="",newdata=""):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
@@ -117,8 +117,34 @@ def updatealias(sqlpass="",sqluser="root",sqlhost="localhost",key="",newdata="")
             return
 
 
+def updatekey(sqlpass="",sqluser="root",sqlhost="localhost",oldkey="",newkey=""):
+    try:
+        mydb = mysql.connector.connect(
+            host = sqlhost.strip(),
+            user = sqluser.strip(),
+            passwd = sqlpass,
+            database = "shortcuts"
+            )
+        cursor = mydb.cursor()
+    except:
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        return
+    else:
+        lik=[]
+        cursor.execute(f"select _key_ from shortcutlog")
+        for k in cursor:
+            lik.append(k[0])
+        if oldkey not in lik:
+            print("\nKey not found.\n")
+            return
+        else:
+            cursor.execute(f"update shortcutlog set _key_ = '{newkey}' where _key_ = '{oldkey}'")
+            mydb.commit()
+            return
 
-def showalias(sqlpass="",sqluser="root",sqlhost="localhost"):
+
+
+def keylist(sqlpass="",sqluser="root",sqlhost="localhost"):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
@@ -133,7 +159,7 @@ def showalias(sqlpass="",sqluser="root",sqlhost="localhost"):
     else:
         cursor.execute(f"select * from shortcutlog")
         print("\nFormat -> Key : Data")
-        print("\n---Alias list---\n")
+        print("\n---Shortcuts list---\n")
         for x in cursor:
             print(x[0]+" : "+x[1])
         print()
