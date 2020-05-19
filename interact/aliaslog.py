@@ -8,6 +8,7 @@ else:
     pass
 
 
+
 def newalias(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
     try:
         mydb = mysql.connector.connect(
@@ -32,6 +33,7 @@ def newalias(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
         else:
             return
     
+
 
 def getalias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
     p=""
@@ -61,6 +63,7 @@ def getalias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
             return p
 
 
+
 def deletealias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
     try:
         mydb = mysql.connector.connect(
@@ -86,6 +89,8 @@ def deletealias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
             mydb.commit()
             return
 
+
+
 def updatealias(sqlpass="",sqluser="root",sqlhost="localhost",key="",newdata=""):
     try:
         mydb = mysql.connector.connect(
@@ -110,3 +115,27 @@ def updatealias(sqlpass="",sqluser="root",sqlhost="localhost",key="",newdata="")
             cursor.execute(f"update shortcutlog set _data_ = '{newdata}' where _key_ = '{key}'")
             mydb.commit()
             return
+
+
+
+def showalias(sqlpass="",sqluser="root",sqlhost="localhost"):
+    try:
+        mydb = mysql.connector.connect(
+            host = sqlhost.strip(),
+            user = sqluser.strip(),
+            passwd = sqlpass,
+            database = "shortcuts"
+            )
+        cursor = mydb.cursor()
+    except:
+        print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
+        return
+    else:
+        cursor.execute(f"select * from shortcutlog")
+        print("\nFormat -> Key : Data\n")
+        print("\n---Alias list---\n")
+        for x in cursor:
+            print(x[0]+" : "+x[1])
+        return
+
+    
