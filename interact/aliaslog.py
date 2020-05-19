@@ -8,7 +8,7 @@ else:
     pass
 
 
-def savedata(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
+def newalias(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
@@ -23,7 +23,7 @@ def savedata(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
         try:
             cursor.execute("create database if not exists shortcuts")
             cursor.execute("use shortcuts")
-            cursor.execute("create table if not exists shortcutlog(_key_ varchar(10) not null unique,_data_ varchar(300) not null unique)")
+            cursor.execute("create table if not exists shortcutlog(_key_ varchar(100) not null unique,_data_ varchar(300) not null unique)")
             cursor.execute(f"insert into shortcutlog values('{key}','{data}')")
             mydb.commit()
         except:
@@ -33,7 +33,7 @@ def savedata(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
             return
     
 
-def getdata(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
+def getalias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
     p=""
     try:
         mydb = mysql.connector.connect(
@@ -50,7 +50,7 @@ def getdata(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
         lik=[]
         cursor.execute(f"select _key_ from shortcutlog")
         for k in cursor:
-            lik.append(k)
+            lik.append(k[0])
         if key not in lik:
             print("\nKey not found.\n")
             return p
@@ -61,7 +61,7 @@ def getdata(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
             return p
 
 
-def deletedata(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
+def deletealias(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
@@ -77,7 +77,7 @@ def deletedata(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
         lik=[]
         cursor.execute(f"select _key_ from shortcutlog")
         for k in cursor:
-            lik.append(k)
+            lik.append(k[0])
         if key not in lik:
             print("\nKey not found.\n")
             return
@@ -86,7 +86,7 @@ def deletedata(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
             mydb.commit()
             return
 
-def updatedata(sqlpass="",sqluser="root",sqlhost="localhost",key="",newdata=""):
+def updatealias(sqlpass="",sqluser="root",sqlhost="localhost",key="",newdata=""):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
@@ -102,7 +102,7 @@ def updatedata(sqlpass="",sqluser="root",sqlhost="localhost",key="",newdata=""):
         lik=[]
         cursor.execute(f"select _key_ from shortcutlog")
         for k in cursor:
-            lik.append(k)
+            lik.append(k[0])
         if key not in lik:
             print("\nKey not found.\n")
             return
