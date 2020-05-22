@@ -213,6 +213,8 @@ def update(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",updates=[]):
                 continue
             else:
                 pass
+
+            print(dbtable,reqcol,newdata,wherecol,pattern)
             
             if str(updates).strip() == "":
                 print(f"\nError in query {number}. New data can't be blank.\n")
@@ -222,7 +224,7 @@ def update(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",updates=[]):
         
             if len(up)==3:
                 try:
-                    cursor.execute(f"update {dbtable.strip()} set {reqcol.strip()} = {newdata}")
+                    cursor.execute(f"update {dbtable.strip()} set {reqcol.strip()} = '{newdata}'")
                     mydb.commit()
                 except:
                     print(f"\nError in query {number}. Check your arguments again.\n")
@@ -239,17 +241,17 @@ def update(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",updates=[]):
                     number+=1
                     continue
                 else:
-                    try:
-                        cursor.execute(f"update {dbtable.strip()} set {reqcol.strip()} = {newdata} where {wherecol.strip()} like '{pattern}'")
-                        mydb.commit()
-                    except:
+                    #try:
+                    cursor.execute(f"update {dbtable.strip()} set {reqcol.strip()} = '{newdata}' where {wherecol.strip()} like '{pattern}'")
+                    mydb.commit()
+                    '''except:
                         print(f"\nError in query {number}. Check your arguments again.\n")
                         print(syner)
                         number+=1
                         continue
                     else:
                         number+=1
-                        continue
+                        continue'''
                 
 
 
