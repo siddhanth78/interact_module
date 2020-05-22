@@ -213,8 +213,6 @@ def update(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",updates=[]):
                 continue
             else:
                 pass
-
-            print(dbtable,reqcol,newdata,wherecol,pattern)
             
             if str(updates).strip() == "":
                 print(f"\nError in query {number}. New data can't be blank.\n")
