@@ -9,7 +9,7 @@ else:
 
 
 
-def newkey(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
+def addkey(sqlpass="",sqluser="root",sqlhost="localhost",key="",data=""):
     try:
         mydb = mysql.connector.connect(
             host = sqlhost.strip(),
