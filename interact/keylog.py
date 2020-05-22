@@ -60,6 +60,10 @@ def getkey(sqlpass="",sqluser="root",sqlhost="localhost",key=""):
             cursor.execute(f"select _data_ from shortcutlog where _key_ = '{key}'")
             for x in cursor:
                 p = x[0]
+            if p.isnumeric()==True:
+                p = int(p)
+            else:
+                pass
             return p
 
 
@@ -164,5 +168,3 @@ def keylist(sqlpass="",sqluser="root",sqlhost="localhost"):
             print(x[0]+" : "+x[1])
         print()
         return
-
-    
