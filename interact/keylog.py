@@ -163,7 +163,7 @@ def keylist(sqlpass="",sqluser="root",sqlhost="localhost"):
     else:
         cursor.execute(f"select * from shortcutlog")
         print("\nFormat -> Key : Data")
-        print("\n---Shortcuts list---\n")
+        print("\n---Key list---\n")
         for x in cursor:
             print(x[0]+" : "+x[1])
         print()
