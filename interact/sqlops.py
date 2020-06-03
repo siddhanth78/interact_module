@@ -7,6 +7,18 @@ except:
 else:
     pass
 
+try:
+    import stdiomask
+except:
+    print("stdiomask (installation reqd. - yes)")
+    time.sleep(3)
+    quit()
+else:
+    pass
+
+import random
+
+
 syner = ("Syntax for updates : updates=[(<table1>,<targetcolumn1>,<newdata1 (int or string)>,"
          "<conditioncolumn1 (can be blank by entering '')>,<pattern1> (can be blank by entering '')),\n"
          "                             (<table2>,<targetcolumn2>,<newdata2 (int or string)>,"
@@ -31,7 +43,7 @@ def login(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="creden
             continue
         break
     while True:
-        passw = getpass.getpass(prompt="Password : ")
+        passw = stdiomask.getpass(prompt="Password : ")
         if passw.strip() == "":
             print("\nPassword must be filled.\n")
             continue
@@ -265,13 +277,13 @@ def sign_up(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="cred
             continue
         break
     while True:
-        passw = getpass.getpass(prompt="Password : ")
+        passw = stdiomask.getpass(prompt="Password : ")
         if passw.strip() == "":
             print("\nPassword must be filled.\n")
             continue
         break
     while True:
-        repassw = getpass.getpass(prompt="Confirm password : ")
+        repassw = stdiomask.getpass(prompt="Confirm password : ")
         if repassw.strip() == "":
             print("\nPassword must be filled.\n")
             continue
