@@ -1,4 +1,4 @@
 # interact_module
 
-*Save in your python lib file.
-*The interact module helps simplify code for system-user interaction
+* Save in your python lib file.
+* The interact module helps simplify code for system-user interaction
