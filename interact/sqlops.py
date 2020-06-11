@@ -1,3 +1,5 @@
+import time
+
 try:
     import mysql.connector
 except:
@@ -81,7 +83,7 @@ def login(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="creden
 
 
 
-def select(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",reqcol="*",wherecol="",pattern=""):
+def select(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",reqcol="*",wherecol="",pattern="",multicond=[]):
     itemlist = []
     try:
         mydb = mysql.connector.connect(
@@ -96,7 +98,7 @@ def select(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",req
         print("\nError. Couldn't connect to database. Probably because database doesn't exist, invalid credentials or invalid database name.\n")
         return
     else:
-        if wherecol.strip()=="":
+        if wherecol.strip()=="" and multicond==[]:
             try:
                 cursor.execute(f"select {reqcol.strip()} from {dbtable.strip()}")
             except:
@@ -106,13 +108,42 @@ def select(sqlhost="localhost",sqluser="root",sqlpass="",sqldb="",dbtable="",req
                 for item in cursor:
                     itemlist.append(item)
                 return itemlist
-        else:
+        elif wherecol.strip()!="" and multicond==[]:
             if pattern.strip()=="":
                 print("\nPattern required.\n")
                 return
             else:
                 try:
                     cursor.execute(f"select {reqcol.strip()} from {dbtable.strip()} where {wherecol.strip()} like '{pattern}'")
+                except:
+                    print("\nError. Check your arguments again.\n")
+                    return
+                else:
+                    for item in cursor:
+                        itemlist.append(item)
+                    return itemlist
+        elif wherecol.strip()=="" and multicond!=[]:
+            if pattern.strip()!="":
+                print("\nPattern not required.\n")
+                return
+            else:
+                try:
+                    if len(multicond) == 1:
+                        for j in multicond:
+                            where , patt = j
+                        cursor.execute(f"select {reqcol.strip()} from {dbtable.strip()} where {where.strip()} like '{patt}'")
+                    elif len(multicond) > 1:
+                        com=""
+                        n=0
+                        sqlbase = f"select {reqcol.strip()} from {dbtable.strip()} where "
+                        for j in multicond:
+                            n+=1
+                            where , patt = j
+                            if n<len(multicond):
+                                com = com+where+" like "+patt+" and "
+                            else:
+                                com = com+where+" like "+patt
+                        cursor.execute(sql+com)
                 except:
                     print("\nError. Check your arguments again.\n")
                     return
