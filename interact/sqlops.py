@@ -3,7 +3,7 @@ import time
 try:
     import mysql.connector
 except:
-    print("mysql-connector-python (installation reqd. - yes)")
+    print("python-mysql-connector (installation reqd. - yes)")
     time.sleep(3)
     quit()
 else:
