@@ -1,0 +1,30 @@
+display :
+
+1.msg(m=*string , [f=0],[e='']) : Display a message to the user. f=1 - Flush=True , e='.' - No newline , end line with '.'
+2.star(m=*string , [f=0],[e='']) : Display a starred message to the user. f=1 - Flush=True , e='.' - No newline , end line with '.'
+3.error(m=*string) : Display an error message to the user.
+4.warn(m=*string) : Display a warning to the user.
+5.info(m=*string) : Display an info box to the user.
+6.tip(m=*string) : Display a tip to the user.
+7.box([title=*string],m=*string) : Display a boxed message to the user. title : Displays title of the box.
+8.clr() : Clear terminal.
+
+9.menu(title=*string , items(*list)=[
+                                           <item1>
+                                           <item2> ...
+                                           ... <item n>
+                                     ], [reuse=0])        : Creates a menu with the desired title and items. Default reuse : 0. If reuse=1, menu function will return a string. It can be stored in a variable.
+
+
+10.prompt_(m=*string) : Prompts the user. Returns a string.
+
+11.yesno() : Asks the user for a yes/no confirmation. Returns an integer ('y' - 1 , 'n' - 0 , default - 2).
+
+12.exit_yesno() : Asks the user for a yes/no confirmation when he/she wants to exit. Returns an integer ('y' - 1 , 'n' - 0 , default-2).
+
+13.custom_yesno(m=*string) : Asks the user for a yes/no confirmation with a custom prompt. Returns an integer ('y'-1 ,'n'-0, default-2).
+
+14.pause([min_=*int] , [sec=*int] , [msec=*int]) : Pauses the program for specified time.
+
+
+
