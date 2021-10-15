@@ -1,5 +1,3 @@
-import pandas as pd
-import numpy as np
 import mysql.connector as sql
 
 mydb = sql.connect(user = "root",
