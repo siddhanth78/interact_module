@@ -35,19 +35,7 @@ pyautogui.click(select_all_x, select_all_y)
 time.sleep(1)
 pyautogui.click(closex, closey)
 
-#pyautogui.click(minx, miny)
-
 '''
-for i in range(0, 4):
-    pyautogui.press('down')
-    time.sleep(0.2)
-    
-pyautogui.click(chemx, chemy)
-time.sleep(1)
-pyautogui.click(quizx, quizy)
-time.sleep(1.5)
-pyautogui.press('down')
-
 while True:
     print(pyautogui.position())
     time.sleep(0.5)
