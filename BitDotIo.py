@@ -1,6 +1,6 @@
 import bitdotio
 
-api_key = "3b9iR_UxKXsdA7Bi8aUu6tpSAAxMj"
+api_key = "3bBzT_S2RgBz46xD6Xu4VbZ6zv73L"
 
 b = bitdotio.bitdotio(api_key)
 
