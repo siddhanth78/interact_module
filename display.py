@@ -1,26 +1,9 @@
 import time
 import random
-
-try:
-    import os
-except:
-    print("os (installation reqd. - yes")
-    time.sleep(3)
-    quit()
-else:
-    pass
-
-try:
-    import getpass
-except:
-    print("getpass (installation reqd. - yes)")
-    time.sleep(3)
-    quit()
-else:
-    pass
+import os
 
 
-def error(m='An error occured.'):
+def error(m='An error occurred.'):
     if m.strip() == "":
         m=' '*7
     if isinstance(m,str):
@@ -38,7 +21,7 @@ def error(m='An error occured.'):
         part = len(l)
         if part > maximum:
             maximum = part
-    print("+-ERROR"+"-"*(maximum-5)+"-+")
+    print("\n+-ERROR"+"-"*(maximum-5)+"-+")
     print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
@@ -62,7 +45,7 @@ def warn(m=' '*9):
         part = len(l)
         if part > maximum:
             maximum = part
-    print("+-WARNING"+"-"*(maximum-7)+"-+")
+    print("\n+-WARNING"+"-"*(maximum-7)+"-+")
     print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
@@ -86,7 +69,7 @@ def info(m=' '*6):
         part = len(l)
         if part > maximum:
             maximum = part
-    print("+-INFO"+"-"*(maximum-4)+"-+")
+    print("\n+-INFO"+"-"*(maximum-4)+"-+")
     print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
@@ -110,7 +93,7 @@ def tip(m=' '*5):
         part = len(l)
         if part > maximum:
             maximum = part
-    print("+-TIP"+"-"*(maximum-3)+"-+")
+    print("\n+-TIP"+"-"*(maximum-3)+"-+")
     print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
@@ -246,9 +229,5 @@ def box(title='-',m=' '):
 def clr():
     os.system('cls')
 
-def help():
-    print("\nLink : https://github.com/siddhanth78/interact_module/blob/master/display.txt\n")
-
 def pause(min_=0,sec=0,msec=0):
     time.sleep((min_*60)+(sec*1)+(msec*0.001))
-   
