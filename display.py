@@ -219,7 +219,7 @@ def box(title='-',m=' '):
         part = len(l)
         if part > maximum:
             maximum = part
-    print("+-"+title+"-"*(maximum-len(title))+"-+")
+    print("\n+-"+title+"-"*(maximum-len(title))+"-+")
     print("| "+" "*maximum+" |")
     for p in li:
         print("| "+p+" "*(maximum-len(p))+" |")
