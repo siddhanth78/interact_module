@@ -1,0 +1,248 @@
+Story
+
+Characters:
+
+Mage (post vulcan)
+Nexus (post vulcan)
+Player (You)
+Tork
+Pearl
+Boris
+Dmitri
+Darius
+DoubleBarreled
+Pyrochassis
+
+Side characters:
+
+Derkaan soldiers
+Engineers
+
+
+PART _0_:
+
+Meet Tork
+Check _0_.py for dialogues
+
+Part _1_:
+
+Meet Mage
+
+MAGE:
+Ah, there you are.
+I wanted to meet you.
+My sources tell me that Nexus was spotted in Derkaan.
+
+YOU:
+Isn't Derkaan off-limits?
+
+MAGE:
+Hence, the discretion.
+At the headquarters, we are in the process of building synthesis chambers.
+In fact, we have completed one of the many chambers.
+As you know, we are not known for our combat capabilities.
+These chambers will fulfill those needs for us.
+
+YOU:
+Why do you need me again?
+
+MAGE:
+On this island, you are the only one who specializes in neural devices.
+I want you to help us control the warriors that are synthesized.
+
+YOU:
+You want to go face-to-face with Nexus and his army?
+It's suicide.
+
+MAGE:
+These warriors are no ordinary ones.
+These are specifically built to counter Nexus and the Derkaan army.
+I know that his army is extraordinarily powerful, but trust me, these warriors will come in handy.
+
+YOU:
+I see.
+Have you conducted any field tests yet?
+
+MAGE:
+That is the other reason why I wanted to see you.
+I need you to go to the outskirts of Derkaan for a test run.
+
+YOU:
+If I don't come back in a day, know that it means I'm dead.
+
+MAGE:
+Well, in that case, I wish you luck. You won't need it.
+
+END
+
+PART _2_:
+
+MAGE:
+You're late.
+I assumed you knew your way around HQ.
+
+YOU:
+Well, it's been a while.
+
+MAGE:
+And, I assume Tork doesn't know of this.
+
+YOU:
+No, he doesn't.
+
+MAGE:
+Very well.
+Here is the test warrior you asked for.
+You can keep it.
+
+YOU:
+Well, that's very polite of you.
+
+MAGE:
+Dmitri will meet you at the border.
+Stay safe.
+
+YOU:
+Will do.
+
+'SAM' HAS BEEN ADDED TO YOUR ROSTER!
+
+END
+
+PART _3_:
+
+YOU GO TO THE BORDER
+
+END
+
+PART _4_:
+
+DMITRI:
+Where are you headed for?
+
+YOU:
+Derkaan.
+
+DMITRI:
+*laughs*
+Mage sent you here, didn't she?
+
+YOU:
+It's not like I had a choice.
+
+DMITRI:
+You're kidding.
+Boy, you don't know what you've gotten yourself into.
+
+YOU:
+If I don't return in a day, you'll come for me, right?
+
+DMITRI:
+Derkaan is off-limits.
+You're on your own.
+Nobody is going to come for you.
+
+YOU:
+Thanks for that.
+Makes me feel safer already.
+
+DMITRI:
+Before heading out there, you might want to take a look at that warrior of yours.
+Maybe give it a little upgrade, yeah?
+He wouldn't even be able to take out one soldier.
+
+YOU:
+Upgrade?
+What do you mean 'upgrade'?
+
+DMITRI:
+You know what, maybe another time.
+Come back and I'll show you.
+I wouldn't be surprised if you died out there.
+
+YOU:
+Great, I'll see you at dinner.
+
+DMITRI:
+Us border patrols don't 'dinner'.
+
+END
+
+PART _4_:
+
+DMITRI:
+So, how did it go?
+
+YOU:
+Well, I survived.
+
+DMITRI:
+That's great. Here, have some food.
+
+YOU:
+Thought you don't 'dinner'.
+
+DMITRI:
+Alright, more for me I guess.
+
+YOU:
+I didn't say no.
+
+DMITRI:
+Careful, it's hot.
+
+YOU:
+Yeah, I got it.
+So, I remember you saying something about an upgrade.
+What did you mean by that?
+
+DMITRI:
+I heard that these warriors can be enhanced.
+
+EARN POINTS TO ENHANCE YOUR WARRIORS.
+USE RUNES TO RANK THEM UP.
+
+GO TO CHARACTER MENU AND UPGRADE YO WARRIOR.
+
+PART _5_
+
+MAGE:
+I am assuming that the test run went well considering that
+you are here alive.
+
+YOU:
+Went better than I thought.
+
+MAGE:
+We need those battle plans.
+
+YOU:
+Straight to the point, eh?
+
+MAGE:
+You need to steal those plans from the battle hall that's deep
+in Nexus' fortress.
+
+YOU:
+And I get in there how?
+
+MAGE:
+You fight your way through.
+
+YOU:
+I just learnt how to use a warrior and now you want me to
+fight my way through an army?
+
+MAGE:
+Is that a no then?
+
+YOU:
+Do I have a choice?
+
+MAGE:
+Very well. Dmitri will lead you to the border.
+
+END
+
+PART _6_:
+
