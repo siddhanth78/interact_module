@@ -2,7 +2,7 @@ from dataclasses import dataclass, asdict
 from dataclass_csv import DataclassReader
 import plotly.express as px
 import pandas as pd
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc, Input, Output, dash_table
 
 #Obviously, DataFrame.read_csv is the better option
 
@@ -19,11 +19,14 @@ app = Dash()
 
 app.layout = html.Div([
                     html.H4("Scores"),
-                    html.P("Box graph of scores"),
+                    dash_table.DataTable(
+                                            id = "score-table"
+                                        ),
+                    html.H4("Box graph of scores"),
                     dcc.RadioItems(
-                                    id = 'info-options',
-                                    options = ['Scores', 'GPA'],
-                                    value = 'Scores'
+                                        id = 'info-options',
+                                        options = ['Scores', 'GPA'],
+                                        value = 'Scores'
                                 ),
                     dcc.Dropdown(
                                     id = 'color-options',
@@ -34,7 +37,7 @@ app.layout = html.Div([
                 ])
 
 @app.callback(
-                Output("output", "children"),
+                [Output("output", "children"), Output("score-table", "data"), Output("score-table", "columns")],
                 [Input("color-options", "value"), Input('info-options', "value")]
             )
 def render_graph(color_option, info_option):
@@ -71,7 +74,9 @@ def render_graph(color_option, info_option):
         fig = px.bar(df, x = "names", y = "scores", color = 'scores', color_continuous_scale = color_option, title = f"Graph with color {color_option}")
     elif info_option == "GPA":
         fig = px.bar(df, x = "names", y = "gpa", color = 'gpa', color_continuous_scale = color_option, title = f"Graph with color {color_option}")
-    return dcc.Graph(figure = fig)
+    data = df.to_dict(orient = "records")
+    columns = list({"name": i, "id": i} for i in df.columns)
+    return dcc.Graph(figure = fig), data, columns
     
 
 app.run_server(debug = True)
