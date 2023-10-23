@@ -41,15 +41,14 @@ else:
     sr = soupr.find("div", class_ = "sc-bde20123-0 gtEgaf")
     
     contentr = sr.find_all("span", class_ = "sc-bde20123-1 iZlgcd")
+    num = sr.find_all("div", class_ = "sc-bde20123-3 bjjENQ")
 
     title = soupp.title
-    
-    print()
 
     title_li = [t.text for t in title][0].split("-")
     
     print(title_li[0])
-    print(f"Rating: {[cr.text for cr in contentr][0]}\n")
+    print(f"Rating: {[cr.text for cr in contentr][0]} ({[n.text for n in num][0]})\n")
 
     sp = soupp.find("div", class_ = "sc-f65f65be-0 fVkLRr")
 
@@ -60,5 +59,4 @@ else:
     for cp in contentp:
         sums.append(cp.text)
         
-    print(max(sums, key = len))
-    print()
+    print(max(sums, key = len)+"\n")
