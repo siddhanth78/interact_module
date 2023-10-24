@@ -11,7 +11,7 @@ while True:
     search_res = []
 
     try:
-        for res in search(query_plot, stop=20):
+        for res in search(query_plot, stop=20, pause = 0.001):
             print(res)
             if "plotsummary" in res:
                 plot = res
@@ -19,7 +19,7 @@ while True:
                 
         plot_li = plot.split("/")
 
-        for res in search(query_rating, num = 2, stop=20):
+        for res in search(query_rating, num = 2, stop=20, pause = 0.001):
             print(res)
             if plot_li[-3] in res:
                 rating = res
@@ -49,8 +49,16 @@ while True:
             title = soupp.title
 
             title_li = [t.text for t in title][0].split("-")
+            
+            title_fin = ""
 
-            print(title_li[0])
+            for tl in title_li:
+                if tl == " Plot ":
+                    break
+                title_fin += tl + "-"
+                
+            print(title_fin[:-1])
+                
             print(
                 f"Rating: {[cr.text for cr in contentr][0]} ({[n.text for n in num][0]})\n"
             )
